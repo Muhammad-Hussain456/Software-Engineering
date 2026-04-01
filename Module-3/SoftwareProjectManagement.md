@@ -1,4 +1,4 @@
-# Section-3: Software Project Management
+# Module-3: Software Project Management
 
 ---
 
@@ -14,11 +14,11 @@ By the end of this module, you should be able to:
 
 ---
 
-## 5.1 Introduction to Software Project Management
+## 3.1 Introduction to Software Project Management
 
 ---
 
-### 5.1.1 What Is Software Project Management?
+### 3.1.1 What Is Software Project Management?
 
 **Software project management** is the application of knowledge, skills, tools, and techniques to software development activities to meet project requirements.
 
@@ -59,7 +59,7 @@ Traditionally, project management balances three competing constraints:
 
 ---
 
-### 5.1.2 Project Management Knowledge Areas
+### 3.1.2 Project Management Knowledge Areas
 
 The Project Management Institute (PMI) defines ten knowledge areas. For NSCT, focus on these:
 
@@ -77,7 +77,7 @@ The Project Management Institute (PMI) defines ten knowledge areas. For NSCT, fo
 
 ---
 
-### 5.1.3 Project Manager Roles and Responsibilities
+### 3.1.3 Project Manager Roles and Responsibilities
 
 | Responsibility | Description |
 |----------------|-------------|
@@ -100,11 +100,11 @@ The Project Management Institute (PMI) defines ten knowledge areas. For NSCT, fo
 
 ---
 
-## 5.2 Project Planning
+## 3.2 Project Planning
 
 ---
 
-### 5.2.1 Work Breakdown Structure (WBS)
+### 3.2.1 Work Breakdown Structure (WBS)
 
 A **Work Breakdown Structure** is a hierarchical decomposition of the total scope of work to be carried out by the project team.
 
@@ -158,7 +158,7 @@ A **Work Breakdown Structure** is a hierarchical decomposition of the total scop
 
 ---
 
-### 5.2.2 Estimation Techniques
+### 3.2.2 Estimation Techniques
 
 Estimation is predicting the effort, duration, and cost required to complete project work.
 
@@ -166,9 +166,9 @@ Estimation is predicting the effort, duration, and cost required to complete pro
 
 | Type | Purpose | Accuracy |
 |------|---------|----------|
-| **Rough Order of Magnitude** | Early decision making | -25% to +75% |
-| **Budgetary Estimate** | Budget approval | -10% to +25% |
-| **Definitive Estimate** | Commitments, contracts | -5% to +10% |
+| **Rough Order of Magnitude** | Early decision making | -23% to +73% |
+| **Budgetary Estimate** | Budget approval | -10% to +23% |
+| **Definitive Estimate** | Commitments, contracts | -3% to +10% |
 
 ---
 
@@ -204,7 +204,7 @@ Estimation is predicting the effort, duration, and cost required to complete pro
 
 | COCOMO Mode | Description | Formula |
 |-------------|-------------|---------|
-| **Organic** | Small teams, familiar environment, flexible requirements | Effort = 2.4 × (KLOC)^1.05 |
+| **Organic** | Small teams, familiar environment, flexible requirements | Effort = 2.4 × (KLOC)^1.03 |
 | **Semi-Detached** | Medium teams, mixed experience, some constraints | Effort = 3.0 × (KLOC)^1.12 |
 | **Embedded** | Tight constraints, complex integration, hardware/software | Effort = 3.6 × (KLOC)^1.20 |
 
@@ -227,23 +227,23 @@ Estimation is predicting the effort, duration, and cost required to complete pro
 | **External Inputs** | User inputs (screens, forms) | Low/Medium/High (3-6) |
 | **External Outputs** | Reports, outputs to users | Low/Medium/High (4-7) |
 | **External Inquiries** | Queries, lookups | Low/Medium/High (3-6) |
-| **Internal Logical Files** | Databases, files maintained | Low/Medium/High (7-15) |
-| **External Interface Files** | Interfaces to other systems | Low/Medium/High (5-10) |
+| **Internal Logical Files** | Databases, files maintained | Low/Medium/High (7-13) |
+| **External Interface Files** | Interfaces to other systems | Low/Medium/High (3-10) |
 
 **Process:**
 1. Count each function type and apply weight
 2. Calculate **Unadjusted Function Points (UFP)**
-3. Apply complexity adjustment factors (14 factors, 0-5 each)
+3. Apply complexity adjustment factors (14 factors, 0-3 each)
 4. Calculate **Adjusted Function Points (FP)**
 
 **Conversion:** FP can be converted to lines of code using language-specific averages:
-- Java: 30-50 LOC per FP
+- Java: 30-30 LOC per FP
 - C++: 40-60 LOC per FP
-- Python: 15-25 LOC per FP
+- Python: 13-23 LOC per FP
 
 ---
 
-#### Technique 5: Planning Poker (Agile)
+#### Technique 3: Planning Poker (Agile)
 
 **Description:** A consensus-based estimation technique used in Agile teams.
 
@@ -252,7 +252,7 @@ Estimation is predicting the effort, duration, and cost required to complete pro
 2. Team discusses the story
 3. Each member privately selects a story point card
 4. All cards revealed simultaneously
-5. If estimates differ, discuss and re-estimate
+3. If estimates differ, discuss and re-estimate
 6. Repeat until consensus
 
 **Story Points vs. Hours:**
@@ -268,7 +268,7 @@ Estimation is predicting the effort, duration, and cost required to complete pro
 
 ---
 
-### 5.2.3 Scheduling
+### 3.2.3 Scheduling
 
 Scheduling is determining when work will be performed and when milestones will be achieved.
 
@@ -287,7 +287,7 @@ A **Gantt chart** is a visual representation of project tasks over time.
 **Example Gantt Chart Structure:**
 
 ```
-Task                    | Week 1 | Week 2 | Week 3 | Week 4 | Week 5
+Task                    | Week 1 | Week 2 | Week 3 | Week 4 | Week 3
 ------------------------|--------|--------|--------|--------|--------
 Requirements            | ██████ |        |        |        |
 Design                  |        | ██████ | ██     |        |
@@ -337,7 +337,7 @@ Standard Deviation = (P - O) / 6
 
 ---
 
-### 5.2.4 Resource Management
+### 3.2.4 Resource Management
 
 Resource management involves allocating people, tools, and facilities to project tasks.
 
@@ -353,11 +353,11 @@ Resource management involves allocating people, tools, and facilities to project
 
 ---
 
-## 5.3 Agile Project Management
+## 3.3 Agile Project Management
 
 ---
 
-### 5.3.1 Agile Principles for Management
+### 3.3.1 Agile Principles for Management
 
 The Agile Manifesto emphasizes:
 
@@ -370,7 +370,7 @@ The Agile Manifesto emphasizes:
 
 ---
 
-### 5.3.2 Scrum Framework
+### 3.3.2 Scrum Framework
 
 Scrum is the most widely used Agile framework.
 
@@ -396,13 +396,13 @@ Scrum is the most widely used Agile framework.
 |-------|---------|---------|
 | **Sprint** | 1-4 weeks | Fixed timebox for delivering increment |
 | **Sprint Planning** | 8 hours (4-week sprint) | Select backlog items; define Sprint Goal |
-| **Daily Scrum** | 15 minutes | Inspect progress; plan next 24 hours |
+| **Daily Scrum** | 13 minutes | Inspect progress; plan next 24 hours |
 | **Sprint Review** | 4 hours (4-week sprint) | Inspect increment; adapt backlog; stakeholder feedback |
 | **Sprint Retrospective** | 3 hours (4-week sprint) | Inspect process; identify improvements |
 
 ---
 
-### 5.3.3 Agile Metrics
+### 3.3.3 Agile Metrics
 
 | Metric | Description | Purpose |
 |--------|-------------|---------|
@@ -427,7 +427,7 @@ Remaining Work
  20 │                   ●
     │                      ●
   0 └─────────────────────────▶ Time
-        1   2   3   4   5   6   Sprint Days
+        1   2   3   4   3   6   Sprint Days
       
     ● Actual    ── Ideal
 ```
@@ -440,7 +440,7 @@ Remaining Work
 
 ---
 
-### 5.3.4 Kanban
+### 3.3.4 Kanban
 
 **Kanban** is a flow-based Agile method focused on visualizing work and limiting work in progress.
 
@@ -464,11 +464,11 @@ Remaining Work
 
 ---
 
-## 5.4 Risk Management
+## 3.4 Risk Management
 
 ---
 
-### 5.4.1 What Is Risk?
+### 3.4.1 What Is Risk?
 
 > **Risk** is an uncertain event or condition that, if it occurs, has a positive or negative effect on project objectives.
 
@@ -479,7 +479,7 @@ Remaining Work
 
 ---
 
-### 5.4.2 Risk Management Process
+### 3.4.2 Risk Management Process
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -509,7 +509,7 @@ Remaining Work
 
 ---
 
-### 5.4.3 Risk Identification
+### 3.4.3 Risk Identification
 
 | Technique | Description |
 |-----------|-------------|
@@ -522,7 +522,7 @@ Remaining Work
 
 ---
 
-### 5.4.4 Risk Analysis
+### 3.4.4 Risk Analysis
 
 **Probability:** Likelihood of risk occurring (0-100%)
 
@@ -539,7 +539,7 @@ Remaining Work
 
 ---
 
-### 5.4.5 Risk Response Strategies
+### 3.4.5 Risk Response Strategies
 
 #### For Threats (Negative Risks)
 
@@ -562,7 +562,7 @@ Remaining Work
 
 ---
 
-### 5.4.6 Risk Register
+### 3.4.6 Risk Register
 
 A **Risk Register** is the central document for tracking risks throughout the project.
 
@@ -582,11 +582,11 @@ A **Risk Register** is the central document for tracking risks throughout the pr
 
 ---
 
-## 5.5 Stakeholder & Communication Management
+## 3.5 Stakeholder & Communication Management
 
 ---
 
-### 5.5.1 Stakeholder Identification
+### 3.5.1 Stakeholder Identification
 
 **Stakeholders** are individuals or groups who can affect or are affected by the project.
 
@@ -599,7 +599,7 @@ A **Risk Register** is the central document for tracking risks throughout the pr
 
 ---
 
-### 5.5.2 Stakeholder Analysis
+### 3.5.2 Stakeholder Analysis
 
 | Attribute | Description |
 |-----------|-------------|
@@ -625,7 +625,7 @@ Low Power   │  Monitor           │  Keep Informed
 
 ---
 
-### 5.5.3 Communication Plan
+### 3.5.3 Communication Plan
 
 A **Communication Plan** defines who needs what information, when, and how.
 
@@ -640,7 +640,7 @@ A **Communication Plan** defines who needs what information, when, and how.
 
 ---
 
-### 5.5.4 Communication Channels
+### 3.5.4 Communication Channels
 
 | Channel | Best For | Considerations |
 |---------|----------|----------------|
@@ -653,11 +653,11 @@ A **Communication Plan** defines who needs what information, when, and how.
 
 ---
 
-## 5.6 Quality Management
+## 3.6 Quality Management
 
 ---
 
-### 5.6.1 Quality Concepts
+### 3.6.1 Quality Concepts
 
 | Concept | Description |
 |---------|-------------|
@@ -667,7 +667,7 @@ A **Communication Plan** defines who needs what information, when, and how.
 
 ---
 
-### 5.6.2 Quality Management Processes
+### 3.6.2 Quality Management Processes
 
 | Process | Description |
 |---------|-------------|
@@ -677,7 +677,7 @@ A **Communication Plan** defines who needs what information, when, and how.
 
 ---
 
-### 5.6.3 Cost of Quality (CoQ)
+### 3.6.3 Cost of Quality (CoQ)
 
 | Category | Description | Examples |
 |----------|-------------|----------|
@@ -690,7 +690,7 @@ A **Communication Plan** defines who needs what information, when, and how.
 
 ---
 
-### 5.6.4 Quality Metrics
+### 3.6.4 Quality Metrics
 
 | Metric | Description |
 |--------|-------------|
@@ -742,7 +742,7 @@ For each risk, calculate risk score and recommend a response strategy:
 | Key developer leaves mid-project | 30% | High (schedule delay) | | |
 | New technology fails to meet requirements | 20% | Critical (project failure) | | |
 | Requirements change significantly | 80% | Medium (scope creep) | | |
-| Vendor goes out of business | 5% | Critical (dependency loss) | | |
+| Vendor goes out of business | 3% | Critical (dependency loss) | | |
 
 <details>
 <summary>Click for answer</summary>
@@ -752,7 +752,7 @@ For each risk, calculate risk score and recommend a response strategy:
 | Key developer leaves | 30% | High (0.7) | 0.21 | **Mitigate**: Cross-train team; document knowledge; use pair programming |
 | New technology fails | 20% | Critical (1.0) | 0.20 | **Avoid**: Create proof-of-concept early; have fallback technology |
 | Requirements change | 80% | Medium (0.4) | 0.32 | **Accept** with contingency: Agile approach; budget buffer for scope |
-| Vendor goes out of business | 5% | Critical (1.0) | 0.05 | **Transfer** or **Mitigate**: Multi-sourcing; escrow agreement |
+| Vendor goes out of business | 3% | Critical (1.0) | 0.03 | **Transfer** or **Mitigate**: Multi-sourcing; escrow agreement |
 
 </details>
 
@@ -771,7 +771,7 @@ Design a communication plan for a project with:
 
 | Stakeholder | Information | Frequency | Format | Responsible |
 |-------------|-------------|-----------|--------|-------------|
-| Development Team | Daily progress, blockers | Daily | Daily Scrum (15 min) | Scrum Master |
+| Development Team | Daily progress, blockers | Daily | Daily Scrum (13 min) | Scrum Master |
 | Product Owner | Sprint progress, backlog | Weekly | Sprint Review | Team |
 | Product Owner | Impediments, decisions | As needed | Video call, Slack | Scrum Master |
 | Executives | High-level progress, risks | Bi-weekly | Dashboard, email summary | Project Manager |
@@ -782,7 +782,7 @@ Design a communication plan for a project with:
 
 ---
 
-## 📝 Module 5 Self-Assessment Quiz
+## 📝 Module 3 Self-Assessment Quiz
 
 1. What are the three constraints in the project management "iron triangle"?
 
@@ -858,26 +858,26 @@ Design a communication plan for a project with:
 
 ## 🔗 Connections to Other Modules
 
-| Concept from Module 5 | Connects to |
+| Concept from Module 3 | Connects to |
 |-----------------------|-------------|
-| Estimation (COCOMO) | Module 4: Implementation (size metrics) |
-| Risk management | Module 3: Design (technical risk) |
+| Estimation (COCOMO) | Module 5: Implementation (size metrics) |
+| Risk management | Module 4: Design (technical risk) |
 | Agile metrics | Module 2: Requirements (backlog management) |
 | Quality management | Module 6: Testing (QA/QC processes) |
 | Communication plan | Module 1: Team structures, stakeholder communication |
 
 ---
 
-## ✅ Module 5 Summary
+## ✅ Module 3 Summary
 
 | Section | Key Takeaways |
 |---------|---------------|
-| **5.1 Introduction** | Project management balances scope, time, cost; PM roles differ in traditional vs. Agile |
-| **5.2 Project Planning** | WBS decomposes work; estimation methods: expert, analogous, parametric (COCOMO, function points), planning poker; scheduling: Gantt, Critical Path, PERT |
-| **5.3 Agile Management** | Scrum (roles, artifacts, events); metrics: velocity, burndown; Kanban (WIP limits, flow) |
-| **5.4 Risk Management** | Identify, analyze (probability × impact), prioritize, respond (avoid, transfer, mitigate, accept) |
-| **5.5 Communication** | Stakeholder analysis (Power/Interest Grid); communication plan; channels |
-| **5.6 Quality** | Quality Assurance (process) vs. Quality Control (product); Cost of Quality |
+| **3.1 Introduction** | Project management balances scope, time, cost; PM roles differ in traditional vs. Agile |
+| **3.2 Project Planning** | WBS decomposes work; estimation methods: expert, analogous, parametric (COCOMO, function points), planning poker; scheduling: Gantt, Critical Path, PERT |
+| **3.3 Agile Management** | Scrum (roles, artifacts, events); metrics: velocity, burndown; Kanban (WIP limits, flow) |
+| **3.4 Risk Management** | Identify, analyze (probability × impact), prioritize, respond (avoid, transfer, mitigate, accept) |
+| **3.5 Communication** | Stakeholder analysis (Power/Interest Grid); communication plan; channels |
+| **3.6 Quality** | Quality Assurance (process) vs. Quality Control (product); Cost of Quality |
 
 ---
 
