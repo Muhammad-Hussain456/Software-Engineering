@@ -1,4 +1,4 @@
-# Section-1: Requirements Engineering
+# Module-2: Requirements Engineering
 
 ---
 
@@ -806,13 +806,13 @@ Requirement ID: REQ-101
 
 | Concept from Module 2 | Connects to |
 |-----------------------|-------------|
-| Functional requirements | Module 3: Design (UML, class diagrams) |
-| Non-functional requirements | Module 4: Architecture (scalability, security) |
-| Use cases | Module 3: Use case diagrams, sequence diagrams |
-| User stories | Module 5: Agile project management |
+| Functional requirements | Module 4: Design (UML, class diagrams) |
+| Non-functional requirements | Module 5: Architecture (scalability, security) |
+| Use cases | Module 4: Use case diagrams, sequence diagrams |
+| User stories | Module 3: Agile project management |
 | Requirements validation | Module 6: Testing (acceptance tests) |
 | Traceability | Module 6: Test coverage |
-| Change management | Module 5: Scope management |
+| Change management | Module 3: Scope management |
 
 ---
 
@@ -827,5 +827,3 @@ Requirement ID: REQ-101
 | **2.5 Summary** | Requirements engineering is foundational—errors here are most expensive |
 
 ---
-
-Would you like me to continue with **Module 3: System Modeling & Design (UML, SOLID, Design Patterns)** in the same detailed format?
