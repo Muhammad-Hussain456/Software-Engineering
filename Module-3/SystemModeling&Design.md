@@ -1,1213 +1,704 @@
-# Module 3: System Modeling & Design
+# Section-3: Software Project Management
 
 ---
 
 ## 📌 Module Learning Objectives
 
 By the end of this module, you should be able to:
-- Understand the purpose of **system modeling** in software development
-- Create and interpret **UML diagrams** (class, sequence, use case, activity)
-- Apply **object-oriented design principles** (SOLID, GRASP)
-- Recognize and apply common **design patterns**
-- Understand the relationship between **requirements and design**
+- Understand the **role of project management** in software development
+- Describe **project planning activities** (estimation, scheduling, risk management)
+- Apply **estimation techniques** (COCOMO, function points, planning poker)
+- Understand **Agile metrics** (velocity, burndown charts)
+- Explain **risk management** processes and strategies
+- Understand **team management** and **stakeholder communication**
 
 ---
 
-## 3.1 Introduction to System Modeling & Design
+## 5.1 Introduction to Software Project Management
 
 ---
 
-### 3.1.1 What Is System Modeling?
+### 5.1.1 What Is Software Project Management?
 
-**System modeling** is the process of creating abstract representations of a system to understand, document, and communicate its structure and behavior before implementation.
+**Software project management** is the application of knowledge, skills, tools, and techniques to software development activities to meet project requirements.
 
-> **🔑 Key Insight:** A model is a simplification of reality. The purpose is to manage complexity by focusing on relevant details and ignoring irrelevant ones.
+> **🔑 Key Insight:** Project management is not just about tracking tasks—it's about delivering value within constraints while managing uncertainty.
 
-#### Why Model?
+#### The Triple Constraint (Iron Triangle)
 
-| Reason | Description |
-|--------|-------------|
-| **Communication** | Models provide a common language between stakeholders, analysts, and developers |
-| **Complexity Management** | Breaking complex systems into understandable parts |
-| **Validation** | Models can be analyzed for consistency and completeness before coding |
-| **Documentation** | Models serve as permanent documentation of design decisions |
-| **Code Generation** | Some models can be used to generate code (MDA - Model Driven Architecture) |
+Traditionally, project management balances three competing constraints:
 
----
+```
+                    ┌─────────────────────────┐
+                    │                         │
+                    │        SCOPE            │
+                    │   (Features, Quality)   │
+                    │                         │
+          ┌─────────┼─────────────────────────┼─────────┐
+          │         │                         │         │
+          │         │                         │         │
+          │  TIME   │                         │  COST   │
+          │(Schedule)│                         │(Budget) │
+          │         │                         │         │
+          │         │                         │         │
+          └─────────┼─────────────────────────┼─────────┘
+                    │                         │
+                    │      Cannot change      │
+                    │      one without        │
+                    │      affecting others   │
+                    │                         │
+                    └─────────────────────────┘
+```
 
-### 3.1.2 Analysis vs. Design
+**The Reality:**
+- If scope increases → time or cost must increase
+- If time decreases → scope must decrease or cost increase
+- If cost decreases → scope must decrease or time increase
 
-Understanding the distinction between analysis and design is essential for the NSCT.
-
-| Aspect | **Analysis** | **Design** |
-|--------|--------------|------------|
-| **Focus** | Understanding the problem | Creating the solution |
-| **Question** | "What does the system need to do?" | "How will the system do it?" |
-| **Artifacts** | Use cases, conceptual models | Class diagrams, sequence diagrams, architecture |
-| **Language** | User/domain terminology | Technical terminology |
-| **Output** | Requirements, analysis models | Design specifications, code structure |
-
-> **🔑 Key Insight:** Analysis is about *understanding* the domain; design is about *constructing* the solution. The NSCT expects you to understand this progression.
-
----
-
-### 3.1.3 The Role of UML
-
-**Unified Modeling Language (UML)** is the standard notation for software modeling. It provides a set of diagram types to represent different views of a system.
-
-#### UML Diagram Categories
-
-| Category | Purpose | Diagrams |
-|----------|---------|----------|
-| **Structural** | Static structure of the system | Class, Component, Deployment, Package, Object |
-| **Behavioral** | Dynamic behavior of the system | Use Case, Activity, State Machine |
-| **Interaction** | Flow of interactions | Sequence, Communication, Timing, Interaction Overview |
-
-#### For NSCT Preparation, Focus On:
-
-| Diagram | Use |
-|---------|-----|
-| **Class Diagram** | Static structure: classes, attributes, methods, relationships |
-| **Sequence Diagram** | Dynamic behavior: object interactions over time |
-| **Use Case Diagram** | System functionality: actors and use cases |
-| **Activity Diagram** | Workflow: flow of control and activities |
+> **🔑 Key Insight:** Modern Agile thinking adds a fourth dimension: **value**. The goal is not just to deliver on time and budget, but to deliver the most valuable features within constraints.
 
 ---
 
-## 3.2 Use Case Diagrams
+### 5.1.2 Project Management Knowledge Areas
+
+The Project Management Institute (PMI) defines ten knowledge areas. For NSCT, focus on these:
+
+| Knowledge Area | Description |
+|----------------|-------------|
+| **Integration Management** | Coordinating all aspects of the project |
+| **Scope Management** | Defining and controlling what is included |
+| **Schedule Management** | Ensuring timely completion |
+| **Cost Management** | Planning and controlling budget |
+| **Quality Management** | Meeting quality requirements |
+| **Resource Management** | Managing team and physical resources |
+| **Communications Management** | Stakeholder communication |
+| **Risk Management** | Identifying and responding to uncertainty |
+| **Stakeholder Management** | Managing expectations and engagement |
 
 ---
 
-### 3.2.1 Purpose
+### 5.1.3 Project Manager Roles and Responsibilities
 
-Use case diagrams show the **functionality** of a system from the user's perspective. They answer: "What can users do with the system?"
+| Responsibility | Description |
+|----------------|-------------|
+| **Planning** | Define scope, create schedule, estimate effort, allocate resources |
+| **Organizing** | Structure the team, define roles, establish processes |
+| **Leading** | Motivate team, resolve conflicts, provide direction |
+| **Controlling** | Track progress, manage changes, report status |
+| **Communicating** | Manage stakeholders, facilitate meetings, document decisions |
+| **Risk Management** | Identify, analyze, and mitigate risks |
+
+#### Project Manager vs. Scrum Master
+
+| Dimension | Project Manager (Traditional) | Scrum Master (Agile) |
+|-----------|------------------------------|---------------------|
+| **Role** | Command and control | Servant leader |
+| **Authority** | Direct authority over resources | No authority; facilitates |
+| **Focus** | Plan adherence, reporting | Process improvement, removing impediments |
+| **Decision Making** | Makes decisions | Enables team to decide |
+| **Success Metric** | On time, on budget | Team effectiveness, value delivery |
 
 ---
 
-### 3.2.2 Components
-
-| Component | Notation | Description |
-|-----------|---------|-------------|
-| **Actor** | 👤 Stick figure | User or external system interacting with the system |
-| **Use Case** | ⚪ Oval | Specific functionality or goal |
-| **System Boundary** | 📦 Rectangle | Boundary between system and external world |
-| **Association** | —— | Line between actor and use case (interaction) |
-| **Include** | `<<include>>` | One use case always includes another |
-| **Extend** | `<<extend>>` | One use case optionally extends another |
-| **Generalization** | ——▷ | Inheritance between actors or use cases |
+## 5.2 Project Planning
 
 ---
 
-### 3.2.3 Example: Online Banking System
+### 5.2.1 Work Breakdown Structure (WBS)
+
+A **Work Breakdown Structure** is a hierarchical decomposition of the total scope of work to be carried out by the project team.
+
+#### WBS Principles
+
+| Principle | Description |
+|-----------|-------------|
+| **100% Rule** | WBS includes 100% of the work defined by the project scope |
+| **Mutually Exclusive** | No overlap between elements |
+| **Outcome-Oriented** | Describes deliverables, not activities |
+| **Decomposable** | Can be broken down into manageable pieces |
+
+#### WBS Example (E-Commerce Platform)
+
+```
+1.0 E-Commerce Platform
+│
+├── 1.1 Project Management
+│   ├── 1.1.1 Project Planning
+│   ├── 1.1.2 Status Reporting
+│   └── 1.1.3 Stakeholder Communication
+│
+├── 1.2 Requirements
+│   ├── 1.2.1 Requirements Elicitation
+│   ├── 1.2.2 Requirements Documentation
+│   └── 1.2.3 Requirements Validation
+│
+├── 1.3 Design
+│   ├── 1.3.1 Architecture Design
+│   ├── 1.3.2 Database Design
+│   └── 1.3.3 UI/UX Design
+│
+├── 1.4 Implementation
+│   ├── 1.4.1 User Authentication
+│   ├── 1.4.2 Product Catalog
+│   ├── 1.4.3 Shopping Cart
+│   ├── 1.4.4 Order Processing
+│   └── 1.4.5 Payment Integration
+│
+├── 1.5 Testing
+│   ├── 1.5.1 Unit Testing
+│   ├── 1.5.2 Integration Testing
+│   ├── 1.5.3 System Testing
+│   └── 1.5.4 User Acceptance Testing
+│
+└── 1.6 Deployment
+    ├── 1.6.1 Environment Setup
+    ├── 1.6.2 Data Migration
+    └── 1.6.3 Production Release
+```
+
+---
+
+### 5.2.2 Estimation Techniques
+
+Estimation is predicting the effort, duration, and cost required to complete project work.
+
+#### Types of Estimates
+
+| Type | Purpose | Accuracy |
+|------|---------|----------|
+| **Rough Order of Magnitude** | Early decision making | -25% to +75% |
+| **Budgetary Estimate** | Budget approval | -10% to +25% |
+| **Definitive Estimate** | Commitments, contracts | -5% to +10% |
+
+---
+
+#### Technique 1: Expert Judgment
+
+**Description:** Consulting individuals with relevant expertise to provide estimates.
+
+| Strengths | Weaknesses |
+|-----------|------------|
+| Fast and inexpensive | Subject to bias |
+| Leverages experience | Depends on expert availability |
+| Accounts for nuance | Hard to replicate |
+
+---
+
+#### Technique 2: Analogous Estimation (Top-Down)
+
+**Description:** Using historical data from similar projects to estimate the current project.
+
+| Aspect | Details |
+|--------|---------|
+| **Formula** | New Estimate = Historical Effort × Similarity Factor |
+| **Strengths** | Fast; uses real data |
+| **Weaknesses** | Depends on truly similar projects; less accurate for novel work |
+
+---
+
+#### Technique 3: Parametric Estimation (COCOMO)
+
+**Description:** Using mathematical models based on project parameters.
+
+**COCOMO (COnstructive COst MOdel)** is one of the most widely used parametric models.
+
+| COCOMO Mode | Description | Formula |
+|-------------|-------------|---------|
+| **Organic** | Small teams, familiar environment, flexible requirements | Effort = 2.4 × (KLOC)^1.05 |
+| **Semi-Detached** | Medium teams, mixed experience, some constraints | Effort = 3.0 × (KLOC)^1.12 |
+| **Embedded** | Tight constraints, complex integration, hardware/software | Effort = 3.6 × (KLOC)^1.20 |
+
+**COCOMO II** adds cost drivers:
+- Product attributes (reliability, complexity)
+- Platform attributes (execution time, memory constraints)
+- Personnel attributes (capability, experience)
+- Project attributes (tools, schedule pressure)
+
+> **🔑 Key Insight:** COCOMO is useful for large projects but requires accurate size estimation (lines of code or function points).
+
+---
+
+#### Technique 4: Function Point Analysis
+
+**Description:** Estimating size based on functionality delivered to the user, independent of implementation language.
+
+| Function Type | Description | Weight Factors |
+|---------------|-------------|----------------|
+| **External Inputs** | User inputs (screens, forms) | Low/Medium/High (3-6) |
+| **External Outputs** | Reports, outputs to users | Low/Medium/High (4-7) |
+| **External Inquiries** | Queries, lookups | Low/Medium/High (3-6) |
+| **Internal Logical Files** | Databases, files maintained | Low/Medium/High (7-15) |
+| **External Interface Files** | Interfaces to other systems | Low/Medium/High (5-10) |
+
+**Process:**
+1. Count each function type and apply weight
+2. Calculate **Unadjusted Function Points (UFP)**
+3. Apply complexity adjustment factors (14 factors, 0-5 each)
+4. Calculate **Adjusted Function Points (FP)**
+
+**Conversion:** FP can be converted to lines of code using language-specific averages:
+- Java: 30-50 LOC per FP
+- C++: 40-60 LOC per FP
+- Python: 15-25 LOC per FP
+
+---
+
+#### Technique 5: Planning Poker (Agile)
+
+**Description:** A consensus-based estimation technique used in Agile teams.
+
+**Process:**
+1. Product Owner describes a user story
+2. Team discusses the story
+3. Each member privately selects a story point card
+4. All cards revealed simultaneously
+5. If estimates differ, discuss and re-estimate
+6. Repeat until consensus
+
+**Story Points vs. Hours:**
+
+| Dimension | Story Points | Hours |
+|-----------|--------------|-------|
+| **Focus** | Effort, complexity, uncertainty | Time |
+| **Team-Specific** | Yes (relative to team) | Universal |
+| **Stability** | Stable over time | Varies by developer |
+| **Velocity** | Can track team velocity | Harder to aggregate |
+
+> **🔑 Key Insight:** Story points measure **effort**, not time. They account for complexity and uncertainty, making them more stable than hour estimates for Agile teams.
+
+---
+
+### 5.2.3 Scheduling
+
+Scheduling is determining when work will be performed and when milestones will be achieved.
+
+#### Gantt Charts
+
+A **Gantt chart** is a visual representation of project tasks over time.
+
+| Component | Description |
+|-----------|-------------|
+| **Tasks** | Work items listed vertically |
+| **Timeline** | Time scale horizontally |
+| **Bars** | Duration of each task |
+| **Dependencies** | Lines showing task relationships |
+| **Milestones** | Key events (diamond markers) |
+
+**Example Gantt Chart Structure:**
+
+```
+Task                    | Week 1 | Week 2 | Week 3 | Week 4 | Week 5
+------------------------|--------|--------|--------|--------|--------
+Requirements            | ██████ |        |        |        |
+Design                  |        | ██████ | ██     |        |
+Implementation          |        |        | ██████ | ██████ |
+Testing                 |        |        |        | ██     | ██████
+Deployment              |        |        |        |        | ██
+```
+
+---
+
+#### Critical Path Method (CPM)
+
+**Critical Path** is the longest path through the project network. Tasks on the critical path have zero slack—any delay delays the project.
+
+| Concept | Description |
+|---------|-------------|
+| **Early Start (ES)** | Earliest a task can begin |
+| **Early Finish (EF)** | ES + Duration |
+| **Late Start (LS)** | Latest a task can begin without delaying project |
+| **Late Finish (LF)** | LS + Duration |
+| **Slack (Float)** | LS - ES (or LF - EF) |
+
+**Critical Path Characteristics:**
+- Tasks with zero slack are on the critical path
+- Any delay to critical path delays project completion
+- Management should focus on critical path tasks
+
+---
+
+#### PERT (Program Evaluation and Review Technique)
+
+**Description:** A probabilistic scheduling technique that accounts for uncertainty.
+
+**Three Estimates:**
+- **Optimistic (O):** Best-case scenario
+- **Most Likely (M):** Realistic estimate
+- **Pessimistic (P):** Worst-case scenario
+
+**Formula:**
+```
+Expected Duration = (O + 4M + P) / 6
+
+Standard Deviation = (P - O) / 6
+```
+
+**Use Case:** Projects with high uncertainty where historical data is limited.
+
+---
+
+### 5.2.4 Resource Management
+
+Resource management involves allocating people, tools, and facilities to project tasks.
+
+| Resource Type | Considerations |
+|---------------|----------------|
+| **Human Resources** | Skills, availability, experience, location, cost |
+| **Infrastructure** | Servers, network, development tools, licenses |
+| **Facilities** | Office space, meeting rooms, equipment |
+
+**Resource Leveling:** Adjusting start/finish dates to address resource constraints (e.g., avoiding over-allocation).
+
+**Resource Smoothing:** Adjusting activities to keep resource usage within limits without changing the critical path.
+
+---
+
+## 5.3 Agile Project Management
+
+---
+
+### 5.3.1 Agile Principles for Management
+
+The Agile Manifesto emphasizes:
+
+| Value | Implication for Management |
+|-------|---------------------------|
+| **Individuals and interactions** over processes and tools | Empower teams; reduce bureaucracy |
+| **Working software** over comprehensive documentation | Focus on delivery; minimize non-value work |
+| **Customer collaboration** over contract negotiation | Continuous stakeholder engagement |
+| **Responding to change** over following a plan | Embrace uncertainty; adapt |
+
+---
+
+### 5.3.2 Scrum Framework
+
+Scrum is the most widely used Agile framework.
+
+#### Roles
+
+| Role | Responsibility |
+|------|----------------|
+| **Product Owner** | Maximizes value; manages Product Backlog; prioritizes work |
+| **Scrum Master** | Facilitates process; removes impediments; coaches team |
+| **Development Team** | Self-organizing; delivers increments; collectively accountable |
+
+#### Artifacts
+
+| Artifact | Description |
+|----------|-------------|
+| **Product Backlog** | Ordered list of everything needed; dynamic; refined continuously |
+| **Sprint Backlog** | Set of items selected for current Sprint; includes plan to deliver |
+| **Increment** | Sum of completed items; must be "Done" (potentially releasable) |
+
+#### Events (Ceremonies)
+
+| Event | Timebox | Purpose |
+|-------|---------|---------|
+| **Sprint** | 1-4 weeks | Fixed timebox for delivering increment |
+| **Sprint Planning** | 8 hours (4-week sprint) | Select backlog items; define Sprint Goal |
+| **Daily Scrum** | 15 minutes | Inspect progress; plan next 24 hours |
+| **Sprint Review** | 4 hours (4-week sprint) | Inspect increment; adapt backlog; stakeholder feedback |
+| **Sprint Retrospective** | 3 hours (4-week sprint) | Inspect process; identify improvements |
+
+---
+
+### 5.3.3 Agile Metrics
+
+| Metric | Description | Purpose |
+|--------|-------------|---------|
+| **Velocity** | Sum of story points completed per sprint | Forecasting; capacity planning |
+| **Burndown Chart** | Remaining work over time | Tracking progress; identifying slippage |
+| **Burnup Chart** | Completed work over time | Tracking value delivered |
+| **Cycle Time** | Time from start to completion of work | Process efficiency |
+| **Lead Time** | Time from request to delivery | Customer responsiveness |
+| **Cumulative Flow Diagram** | Work in progress across stages | Identifying bottlenecks |
+
+#### Burndown Chart
+
+```
+Remaining Work
+    │
+ 80 │ ●
+    │    ●
+ 60 │       ●
+    │          ●
+ 40 │             ●
+    │                ●
+ 20 │                   ●
+    │                      ●
+  0 └─────────────────────────▶ Time
+        1   2   3   4   5   6   Sprint Days
+      
+    ● Actual    ── Ideal
+```
+
+**Interpreting Burndown Charts:**
+- **Above ideal line:** Behind schedule (more work remains than planned)
+- **Below ideal line:** Ahead of schedule
+- **Flat line:** No progress; blocked tasks
+- **Upward spike:** New work added or re-estimation
+
+---
+
+### 5.3.4 Kanban
+
+**Kanban** is a flow-based Agile method focused on visualizing work and limiting work in progress.
+
+| Principle | Description |
+|-----------|-------------|
+| **Visualize Work** | Kanban board with columns (To Do, In Progress, Done) |
+| **Limit WIP** | Maximum items in each column; prevents overload |
+| **Manage Flow** | Monitor cycle time; identify bottlenecks |
+| **Explicit Policies** | Clear rules for moving items |
+| **Continuous Improvement** | Inspect and adapt |
+
+**Kanban vs. Scrum:**
+
+| Dimension | Scrum | Kanban |
+|-----------|-------|--------|
+| **Cadence** | Fixed timebox (Sprints) | Continuous flow |
+| **Roles** | Defined (PO, SM, Team) | Optional |
+| **Work Limits** | Sprint capacity | WIP limits |
+| **Changes** | Between sprints | Any time |
+| **Metrics** | Velocity | Cycle time, throughput |
+
+---
+
+## 5.4 Risk Management
+
+---
+
+### 5.4.1 What Is Risk?
+
+> **Risk** is an uncertain event or condition that, if it occurs, has a positive or negative effect on project objectives.
+
+| Type | Description |
+|------|-------------|
+| **Threat (Negative Risk)** | Potential harm to project (delay, cost overrun, failure) |
+| **Opportunity (Positive Risk)** | Potential benefit (early delivery, cost savings, new capability) |
+
+---
+
+### 5.4.2 Risk Management Process
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           Online Banking System                             │
+│                         Risk Management Process                             │
+├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│                         ┌─────────────────────────────────────┐             │
-│                         │                                     │             │
-│                         │      ┌──────────────────┐           │             │
-│                         │      │   View Balance   │           │             │
-│                         │      └──────────────────┘           │             │
-│                         │              ▲                      │             │
-│                         │              │                      │             │
-│   ┌─────────────┐       │      ┌──────┴──────┐               │             │
-│   │  Customer   │───────┼─────▶│ Transfer     │               │             │
-│   └─────────────┘       │      │ Funds        │               │             │
-│                         │      └──────────────┘               │             │
-│                         │              │                      │             │
-│                         │              ▼                      │             │
-│                         │      ┌──────────────────┐           │             │
-│                         │      │  Authenticate    │◀──┐       │             │
-│                         │      │  User           │   │       │             │
-│                         │      └──────────────────┘   │       │             │
-│                         │              ▲              │       │             │
-│                         │              │              │       │             │
-│   ┌─────────────┐       │      ┌──────┴──────┐       │       │             │
-│   │  Admin      │───────┼─────▶│ Manage      │       │       │             │
-│   └─────────────┘       │      │ Accounts    │       │       │             │
-│                         │      └──────────────┘       │       │             │
-│                         │              │              │       │             │
-│                         │              ▼              │       │             │
-│                         │      ┌──────────────────┐   │       │             │
-│                         │      │   <<include>>    │   │       │             │
-│                         │      │   Log Activity   │   │       │             │
-│                         │      └──────────────────┘   │       │             │
-│                         │                             │       │             │
-│                         │      ┌──────────────────┐   │       │             │
-│                         │      │   <<extend>>     │   │       │             │
-│                         │      │   Fraud Alert    │◀──┘       │             │
-│                         │      └──────────────────┘           │             │
-│                         │                                     │             │
-│                         └─────────────────────────────────────┘             │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
+│   │ Identification│───▶│   Analysis   │───▶│  Prioritization│               │
+│   │              │    │              │    │               │               │
+│   │ Find risks   │    │ Assess       │    │ Rank by       │               │
+│   │ Document     │    │ Probability  │    │ Impact ×      │               │
+│   │              │    │ & Impact     │    │ Probability   │               │
+│   └──────────────┘    └──────────────┘    └──────────────┘                │
+│          │                   │                   │                         │
+│          │                   │                   │                         │
+│          ▼                   ▼                   ▼                         │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
+│   │   Response   │───▶│   Monitoring │───▶│   Control    │                │
+│   │   Planning   │    │              │    │              │                │
+│   │              │    │ Track risks  │    │ Implement    │                │
+│   │ Mitigation   │    │ Reassess     │    │ responses    │                │
+│   │ Strategies   │    │              │    │              │                │
+│   └──────────────┘    └──────────────┘    └──────────────┘                │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### 3.2.4 Include vs. Extend
+### 5.4.3 Risk Identification
 
-| Relationship | Meaning | Example |
-|--------------|---------|---------|
-| **Include** | Required behavior that is always executed as part of the base use case | "Transfer Funds" always includes "Authenticate User" |
-| **Extend** | Optional behavior that may be executed under certain conditions | "Fraud Alert" extends "Transfer Funds" only if suspicious activity detected |
-
-> **🔑 Key Insight:** Include = mandatory; Extend = optional. The NSCT often tests this distinction.
-
----
-
-## 3.3 Class Diagrams
-
----
-
-### 3.3.1 Purpose
-
-Class diagrams show the **static structure** of a system: classes, attributes, methods, and relationships between classes.
-
----
-
-### 3.3.2 Class Notation
-
-```
-┌─────────────────────────────────────────┐
-│              Class Name                  │
-├─────────────────────────────────────────┤
-│  - attribute1: Type                      │
-│  # attribute2: Type                      │
-│  + attribute3: Type                      │
-├─────────────────────────────────────────┤
-│  + method1(): ReturnType                 │
-│  - method2(param: Type): ReturnType      │
-│  # method3(): void                       │
-└─────────────────────────────────────────┘
-```
-
-#### Visibility Symbols
-
-| Symbol | Visibility | Meaning |
-|--------|------------|---------|
-| `+` | Public | Accessible to any class |
-| `-` | Private | Accessible only within the class |
-| `#` | Protected | Accessible to subclasses and same package |
-| `~` | Package | Accessible within the same package |
-
----
-
-### 3.3.3 Relationships
-
-The NSCT expects you to understand the different types of relationships between classes.
-
----
-
-#### Association
-
-**Definition:** A structural relationship indicating that objects of one class are connected to objects of another.
-
-**Notation:** Solid line (——)
-
-```
-┌─────────────┐                    ┌─────────────┐
-│   Customer  │                    │   Account   │
-├─────────────┤                    ├─────────────┤
-│ - name      │                    │ - accountNo │
-│ - email     │                    │ - balance   │
-└─────────────┘                    └─────────────┘
-       │                                    ▲
-       │                                    │
-       └────────────────────────────────────┘
-                    (1 owns 0..*)
-```
-
-**Multiplicity:**
-
-| Notation | Meaning |
-|----------|---------|
-| `1` | Exactly one |
-| `0..1` | Zero or one |
-| `0..*` or `*` | Zero or more |
-| `1..*` | One or more |
-| `n..m` | Between n and m |
-
----
-
-#### Aggregation (Weak "Has-A")
-
-**Definition:** A "whole-part" relationship where parts can exist independently of the whole.
-
-**Notation:** Hollow diamond on the whole side (◇——)
-
-```
-┌─────────────┐ ◇───────────────────┐
-│  University │                     │  Department
-├─────────────┤                     ├─────────────┤
-│ - name      │                     │ - name      │
-└─────────────┘                     └─────────────┘
-
-A University has Departments.
-Departments can exist without the University (if University closes, Departments continue).
-```
-
----
-
-#### Composition (Strong "Has-A")
-
-**Definition:** A "whole-part" relationship where parts cannot exist independently of the whole. Parts are destroyed when the whole is destroyed.
-
-**Notation:** Filled diamond on the whole side (◆——)
-
-```
-┌─────────────┐ ◆───────────────────┐
-│   House     │                     │   Room
-├─────────────┤                     ├─────────────┤
-│ - address   │                     │ - name      │
-└─────────────┘                     │ - size      │
-                                    └─────────────┘
-
-A House has Rooms.
-Rooms cannot exist without the House.
-```
-
----
-
-#### Inheritance (Generalization)
-
-**Definition:** An "is-a" relationship where a subclass inherits from a superclass.
-
-**Notation:** Hollow triangle arrow (——▷)
-
-```
-                    ┌─────────────┐
-                    │  Employee   │
-                    ├─────────────┤
-                    │ - id        │
-                    │ - name      │
-                    │ + work()    │
-                    └─────────────┘
-                           ▲
-                           │
-           ┌───────────────┼───────────────┐
-           │               │               │
-┌──────────┴───┐   ┌───────┴──────┐   ┌────┴─────────┐
-│  Developer   │   │  Manager     │   │  Designer    │
-├──────────────┤   ├──────────────┤   ├──────────────┤
-│ + writeCode()│   │ + manageTeam()│   │ + createDesign()│
-└──────────────┘   └──────────────┘   └──────────────┘
-
-Developer, Manager, and Designer are types of Employee.
-```
-
----
-
-#### Dependency
-
-**Definition:** A temporary relationship where one class uses another (e.g., as a method parameter or local variable).
-
-**Notation:** Dashed arrow (----▶)
-
-```
-┌─────────────┐                    ┌─────────────┐
-│   Order     │ ─ ─ ─ ─ ─ ─ ─ ─ ▶ │   Payment   │
-├─────────────┤                    ├─────────────┤
-│ + process() │                    │ + charge()  │
-└─────────────┘                    └─────────────┘
-
-Order depends on Payment (uses it temporarily), but doesn't own it.
-```
-
----
-
-### 3.3.4 Relationship Summary
-
-| Relationship | Notation | Type | Example |
-|--------------|----------|------|---------|
-| **Association** | —— | "Uses" | Customer —— Account |
-| **Aggregation** | ◇—— | Weak "has-a" | University ◇—— Department |
-| **Composition** | ◆—— | Strong "has-a" | House ◆—— Room |
-| **Inheritance** | ——▷ | "Is-a" | Car ——▷ Vehicle |
-| **Dependency** | ----▶ | Temporary use | Order ----▶ Payment |
-
----
-
-### 3.3.5 Example: Complete Class Diagram
-
-```
-┌─────────────────────────────┐         ┌─────────────────────────────┐
-│         Customer            │         │           Order             │
-├─────────────────────────────┤         ├─────────────────────────────┤
-│ - id: int                   │         │ - orderId: int              │
-│ - name: String              │         │ - orderDate: Date           │
-│ - email: String             │         │ - status: OrderStatus       │
-├─────────────────────────────┤         ├─────────────────────────────┤
-│ + placeOrder(): Order       │1       *│ + addItem(product): void   │
-│ + viewOrders(): List<Order> │────────▶│ + calculateTotal(): double │
-│ + updateProfile(): void     │         │ + submit(): void            │
-└─────────────────────────────┘         └─────────────────────────────┘
-                                                │
-                                                │ ◆ (composition)
-                                                │
-                                                ▼
-┌─────────────────────────────┐         ┌─────────────────────────────┐
-│          Product            │         │        OrderItem            │
-├─────────────────────────────┤         ├─────────────────────────────┤
-│ - productId: int            │         │ - quantity: int             │
-│ - name: String              │         │ - unitPrice: double         │
-│ - price: double             │         ├─────────────────────────────┤
-│ - stock: int                │         │ + getSubtotal(): double     │
-├─────────────────────────────┤         └─────────────────────────────┘
-│ + updateStock(qty): void    │               * │
-│ + isAvailable(): boolean    │                 │
-└─────────────────────────────┘                 │
-         ▲                                      │
-         │                                      │
-         └──────────────────────────────────────┘
-                    (association)
-
-┌─────────────────────────────┐
-│      Payment (abstract)     │
-├─────────────────────────────┤
-│ - amount: double            │
-│ - date: Date                │
-├─────────────────────────────┤
-│ + process(): boolean        │
-└─────────────────────────────┘
-         ▲
-         │
-    ┌────┴────┐
-    │         │
-┌───┴───┐ ┌───┴───┐
-│ Credit│ │ PayPal│
-│ Card  │ │       │
-└───────┘ └───────┘
-```
-
----
-
-## 3.4 Sequence Diagrams
-
----
-
-### 3.4.1 Purpose
-
-Sequence diagrams show **interactions over time** between objects. They answer: "How do objects collaborate to accomplish a task?"
-
----
-
-### 3.4.2 Components
-
-| Component | Notation | Description |
-|-----------|----------|-------------|
-| **Lifeline** | `[object]: Class` | Vertical line representing an object's existence |
-| **Activation Bar** | ████ | Rectangle on lifeline showing when object is active |
-| **Message** | ——▶ | Arrow from sender to receiver showing communication |
-| **Return** | ----▶ | Dashed arrow showing return value |
-| **Alternative** | `alt` | Conditional flow (if-else) |
-| **Loop** | `loop` | Repetitive flow |
-| **Creation** | ----▶ `new` | Object creation |
-| **Destruction** | ❌ | Object destruction |
-
----
-
-### 3.4.3 Example: Place Order Sequence
-
-```
-Customer          :OrderController    :OrderService      :Inventory         :PaymentService
-    │                    │                  │                 │                    │
-    │ placeOrder(items)  │                  │                 │                    │
-    │───────────────────▶│                  │                 │                    │
-    │                    │                  │                 │                    │
-    │                    │ createOrder()    │                 │                    │
-    │                    │─────────────────▶│                 │                    │
-    │                    │                  │                 │                    │
-    │                    │                  │ checkStock()    │                    │
-    │                    │                  │────────────────▶│                    │
-    │                    │                  │                 │                    │
-    │                    │                  │ stockAvailable  │                    │
-    │                    │                  │◀────────────────│                    │
-    │                    │                  │                 │                    │
-    │                    │                  │                 │                    │
-    │                    │                  │ reserveStock()  │                    │
-    │                    │                  │────────────────▶│                    │
-    │                    │                  │                 │                    │
-    │                    │                  │                 │                    │
-    │                    │                  │ processPayment(amount)             │
-    │                    │                  │────────────────────────────────────▶│
-    │                    │                  │                 │                    │
-    │                    │                  │                 │ paymentConfirmed  │
-    │                    │                  │◀────────────────────────────────────│
-    │                    │                  │                 │                    │
-    │                    │ orderConfirmed   │                 │                    │
-    │                    │◀─────────────────│                 │                    │
-    │                    │                  │                 │                    │
-    │ confirmation       │                  │                 │                    │
-    │◀───────────────────│                  │                 │                    │
-    │                    │                  │                 │                    │
-```
-
----
-
-### 3.4.4 Combined Fragments
-
-| Fragment | Symbol | Meaning |
-|----------|--------|---------|
-| **Alternative** | `alt` | If-else; multiple conditional paths |
-| **Option** | `opt` | Optional execution (if condition true) |
-| **Loop** | `loop` | Repeat while condition true |
-| **Parallel** | `par` | Concurrent execution |
-| **Critical** | `critical` | Atomic execution (no interleaving) |
-
-**Example with Combined Fragments:**
-
-```
-:User          :System          :Database
-  │                │                │
-  │   login()      │                │
-  │───────────────▶│                │
-  │                │                │
-  │                │  authenticate()│
-  │                │───────────────▶│
-  │                │                │
-  │                │                │
-  │                │    result      │
-  │                │◀───────────────│
-  │                │                │
-  │                │                │
-  ┌──────────────────────────────────┐
-  │ alt [valid credentials]          │
-  │   │                │                │
-  │   │  success       │                │
-  │   │◀───────────────│                │
-  │   │                │                │
-  └──────────────────────────────────┘
-  ┌──────────────────────────────────┐
-  │ else [invalid credentials]       │
-  │   │                │                │
-  │   │  error         │                │
-  │   │◀───────────────│                │
-  │   │                │                │
-  └──────────────────────────────────┘
-```
-
----
-
-## 3.5 Activity Diagrams
-
----
-
-### 3.5.1 Purpose
-
-Activity diagrams model **workflows** and **process flows**. They answer: "What happens step-by-step?"
-
----
-
-### 3.5.2 Components
-
-| Component | Notation | Description |
-|-----------|----------|-------------|
-| **Start Node** | ● | Beginning of flow |
-| **Activity** | (rounded rectangle) | Action or step |
-| **Decision** | ◇ | Branch (if-else) |
-| **Merge** | ◇ | Combine branches |
-| **Fork** | ———▷ | Parallel split |
-| **Join** | ◁——— | Parallel merge |
-| **End Node** | ◉ | End of flow |
-| **Swimlane** | Columns | Partition by actor/role |
-
----
-
-### 3.5.3 Example: Order Processing Workflow
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                              Order Processing                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│     Customer           │      System        │    Warehouse    │   Payment   │
-│                        │                    │                 │             │
-│  ┌──────────┐          │                    │                 │             │
-│  │ Place    │          │                    │                 │             │
-│  │ Order    │          │                    │                 │             │
-│  └────┬─────┘          │                    │                 │             │
-│       │                │                    │                 │             │
-│       ▼                │                    │                 │             │
-│  ┌──────────┐          │                    │                 │             │
-│  │ Enter    │          │                    │                 │             │
-│  │ Details  │          │                    │                 │             │
-│  └────┬─────┘          │                    │                 │             │
-│       │                │                    │                 │             │
-│       ▼                │                    │                 │             │
-│       └────────────────┼────────────────────┼─────────────────┘             │
-│                        ▼                    │                 │             │
-│                   ┌──────────┐              │                 │             │
-│                   │ Validate │              │                 │             │
-│                   │ Order    │              │                 │             │
-│                   └────┬─────┘              │                 │             │
-│                        │                    │                 │             │
-│                        ▼                    │                 │             │
-│                     ┌──┴──┐                 │                 │             │
-│                     │ ◇   │                 │                 │             │
-│                     └──┬──┘                 │                 │             │
-│                ┌───────┴───────┐            │                 │             │
-│                │               │            │                 │             │
-│            [Valid]          [Invalid]       │                 │             │
-│                │               │            │                 │             │
-│                ▼               ▼            │                 │             │
-│           ┌──────────┐    ┌──────────┐     │                 │             │
-│           │ Process  │    │ Show     │     │                 │             │
-│           │ Payment  │    │ Error    │     │                 │             │
-│           └────┬─────┘    └────┬─────┘     │                 │             │
-│                │               │           │                 │             │
-│                ▼               │           │                 │             │
-│           ┌──────────┐         │           │                 │             │
-│           │ Authorize│         │           │                 │             │
-│           │ Payment  │         │           │                 │             │
-│           └────┬─────┘         │           │                 │             │
-│                │               │           │                 │             │
-│             ┌──┴──┐            │           │                 │             │
-│             │ ◇   │            │           │                 │             │
-│             └──┬──┘            │           │                 │             │
-│        ┌───────┴───────┐       │           │                 │             │
-│        │               │       │           │                 │             │
-│    [Approved]      [Declined]  │           │                 │             │
-│        │               │       │           │                 │             │
-│        ▼               ▼       │           │                 │             │
-│   ┌──────────┐    ┌──────────┐│           │                 │             │
-│   │  Notify  │    │  Notify  ││           │                 │             │
-│   │  Success │    │  Failure ││           │                 │             │
-│   └────┬─────┘    └────┬─────┘│           │                 │             │
-│        │               │      │           │                 │             │
-│        └───────────────┼──────┘           │                 │             │
-│                        │                  │                 │             │
-│                        ▼                  │                 │             │
-│                   ┌──────────┐            │                 │             │
-│                   │  Update  │            │                 │             │
-│                   │  Order   │            │                 │             │
-│                   │  Status  │            │                 │             │
-│                   └────┬─────┘            │                 │             │
-│                        │                  │                 │             │
-│                        ▼                  │                 │             │
-│                   ┌──────────┐            │                 │             │
-│                   │  Notify  │            │                 │             │
-│                   │  User    │            │                 │             │
-│                   └────┬─────┘            │                 │             │
-│                        │                  │                 │             │
-│                        ▼                  ▼                 │             │
-│                        └──────────────────┼─────────────────┘             │
-│                                           │                               │
-│                                           ▼                               │
-│                                      ┌──────────┐                         │
-│                                      │  Ship    │                         │
-│                                      │  Order   │                         │
-│                                      └──────────┘                         │
-│                                                                           │
-└───────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 3.6 SOLID Design Principles
-
----
-
-### 3.6.1 Overview
-
-SOLID is an acronym for five design principles that make software more maintainable, understandable, and flexible. The NSCT expects you to understand these principles.
-
-| Principle | Full Name | Core Idea |
-|-----------|-----------|-----------|
-| **S** | Single Responsibility | One class, one reason to change |
-| **O** | Open/Closed | Open for extension, closed for modification |
-| **L** | Liskov Substitution | Subtypes must be substitutable for base types |
-| **I** | Interface Segregation | Many specific interfaces over one general interface |
-| **D** | Dependency Inversion | Depend on abstractions, not concretions |
-
----
-
-### 3.6.2 S: Single Responsibility Principle (SRP)
-
-> **"A class should have only one reason to change."**
-
-**Violation Example:**
-```java
-// Bad: This class has multiple responsibilities
-public class Employee {
-    // Responsibility 1: Employee data management
-    private String name;
-    private double salary;
-    
-    // Responsibility 2: Payroll calculation
-    public double calculatePay() { ... }
-    
-    // Responsibility 3: Database persistence
-    public void saveToDatabase() { ... }
-    
-    // Responsibility 4: Report generation
-    public String generateReport() { ... }
-}
-```
-
-**Corrected Example:**
-```java
-// Good: Each class has a single responsibility
-public class Employee {
-    private String name;
-    private double salary;
-    // Only employee data
-}
-
-public class PayrollCalculator {
-    public double calculatePay(Employee e) { ... }
-}
-
-public class EmployeeRepository {
-    public void save(Employee e) { ... }
-}
-
-public class EmployeeReportGenerator {
-    public String generate(Employee e) { ... }
-}
-```
-
-> **🔑 Key Insight:** When a class has multiple responsibilities, changes to one responsibility may break others. Separation makes code more maintainable.
-
----
-
-### 3.6.3 O: Open/Closed Principle (OCP)
-
-> **"Software entities should be open for extension but closed for modification."**
-
-**Violation Example:**
-```java
-// Bad: Adding a new shape requires modifying this class
-public class AreaCalculator {
-    public double calculateArea(Object shape) {
-        if (shape instanceof Rectangle) {
-            Rectangle r = (Rectangle) shape;
-            return r.width * r.height;
-        } else if (shape instanceof Circle) {
-            Circle c = (Circle) shape;
-            return Math.PI * c.radius * c.radius;
-        }
-        // Adding Triangle requires modifying this method!
-        return 0;
-    }
-}
-```
-
-**Corrected Example:**
-```java
-// Good: Open for extension via polymorphism
-public interface Shape {
-    double calculateArea();
-}
-
-public class Rectangle implements Shape {
-    private double width;
-    private double height;
-    
-    public double calculateArea() {
-        return width * height;
-    }
-}
-
-public class Circle implements Shape {
-    private double radius;
-    
-    public double calculateArea() {
-        return Math.PI * radius * radius;
-    }
-}
-
-public class AreaCalculator {
-    public double calculateArea(Shape shape) {
-        return shape.calculateArea();  // No modification needed for new shapes
-    }
-}
-```
-
-> **🔑 Key Insight:** New functionality should be added by creating new classes, not by modifying existing ones.
-
----
-
-### 3.6.4 L: Liskov Substitution Principle (LSP)
-
-> **"Objects of a superclass should be replaceable with objects of a subclass without affecting correctness."**
-
-**Violation Example:**
-```java
-// Bad: Square breaks Rectangle behavior
-public class Rectangle {
-    protected double width;
-    protected double height;
-    
-    public void setWidth(double w) { this.width = w; }
-    public void setHeight(double h) { this.height = h; }
-    public double getArea() { return width * height; }
-}
-
-public class Square extends Rectangle {
-    @Override
-    public void setWidth(double w) {
-        super.setWidth(w);
-        super.setHeight(w);  // Violates expectation!
-    }
-    
-    @Override
-    public void setHeight(double h) {
-        super.setWidth(h);
-        super.setHeight(h);  // Violates expectation!
-    }
-}
-
-// This test fails with Square
-public void testArea(Rectangle r) {
-    r.setWidth(5);
-    r.setHeight(4);
-    assert r.getArea() == 20;  // With Square, area becomes 16!
-}
-```
-
-**Corrected Example:**
-```java
-// Good: Separate abstractions
-public interface Shape {
-    double getArea();
-}
-
-public class Rectangle implements Shape {
-    private double width;
-    private double height;
-    
-    public void setWidth(double w) { this.width = w; }
-    public void setHeight(double h) { this.height = h; }
-    public double getArea() { return width * height; }
-}
-
-public class Square implements Shape {
-    private double side;
-    
-    public void setSide(double s) { this.side = s; }
-    public double getArea() { return side * side; }
-}
-```
-
-> **🔑 Key Insight:** Subtypes must honor the contract of their supertypes. If a subclass changes behavior in unexpected ways, it violates LSP.
-
----
-
-### 3.6.5 I: Interface Segregation Principle (ISP)
-
-> **"Clients should not be forced to depend on interfaces they do not use."**
-
-**Violation Example:**
-```java
-// Bad: Fat interface
-public interface Worker {
-    void work();
-    void eat();
-    void sleep();
-    void attendMeeting();
-}
-
-public class Robot implements Worker {
-    public void work() { ... }      // OK
-    public void eat() { /* Not needed! */ }  // Forced to implement
-    public void sleep() { /* Not needed! */ } // Forced to implement
-    public void attendMeeting() { ... }       // OK
-}
-```
-
-**Corrected Example:**
-```java
-// Good: Segregated interfaces
-public interface Workable {
-    void work();
-}
-
-public interface Eatable {
-    void eat();
-}
-
-public interface Sleepable {
-    void sleep();
-}
-
-public interface MeetingAttendable {
-    void attendMeeting();
-}
-
-public class Human implements Workable, Eatable, Sleepable, MeetingAttendable {
-    public void work() { ... }
-    public void eat() { ... }
-    public void sleep() { ... }
-    public void attendMeeting() { ... }
-}
-
-public class Robot implements Workable, MeetingAttendable {
-    public void work() { ... }
-    public void attendMeeting() { ... }
-    // No need to implement eat() or sleep()
-}
-```
-
-> **🔑 Key Insight:** Smaller, focused interfaces are better than large, general ones. This prevents clients from depending on methods they don't need.
-
----
-
-### 3.6.6 D: Dependency Inversion Principle (DIP)
-
-> **"High-level modules should not depend on low-level modules. Both should depend on abstractions."**
-
-**Violation Example:**
-```java
-// Bad: High-level module depends directly on low-level module
-public class EmailService {
-    public void sendEmail(String to, String message) { ... }
-}
-
-public class NotificationService {
-    private EmailService emailService = new EmailService();  // Direct dependency
-    
-    public void notify(String user, String message) {
-        emailService.sendEmail(user, message);
-    }
-}
-```
-
-**Corrected Example:**
-```java
-// Good: Both depend on abstraction
-public interface MessageSender {
-    void send(String to, String message);
-}
-
-public class EmailService implements MessageSender {
-    public void send(String to, String message) { ... }
-}
-
-public class SMSService implements MessageSender {
-    public void send(String to, String message) { ... }
-}
-
-public class NotificationService {
-    private MessageSender messageSender;  // Depends on abstraction
-    
-    public NotificationService(MessageSender sender) {
-        this.messageSender = sender;  // Dependency injection
-    }
-    
-    public void notify(String user, String message) {
-        messageSender.send(user, message);
-    }
-}
-
-// Usage
-NotificationService emailNotifier = new NotificationService(new EmailService());
-NotificationService smsNotifier = new NotificationService(new SMSService());
-```
-
-> **🔑 Key Insight:** Depend on interfaces/abstract classes, not concrete implementations. This makes code more flexible and testable.
-
----
-
-## 3.7 GRASP Principles
-
----
-
-### 3.7.1 Overview
-
-**GRASP (General Responsibility Assignment Software Patterns)** are principles for assigning responsibilities to classes in object-oriented design.
-
-| Principle | Core Idea |
-|-----------|-----------|
-| **Information Expert** | Assign responsibility to the class that has the information needed |
-| **Creator** | Assign creation responsibility to the class that contains or uses the object |
-| **Controller** | Assign responsibility for handling system events to a controller class |
-| **Low Coupling** | Minimize dependencies between classes |
-| **High Cohesion** | Keep classes focused and responsibilities related |
-| **Polymorphism** | Use polymorphism for behavior variations |
-| **Pure Fabrication** | Create artificial classes when needed to maintain low coupling/high cohesion |
-| **Indirection** | Use intermediary classes to reduce coupling |
-| **Protected Variations** | Identify points of predicted variation and create stable interfaces |
-
----
-
-### 3.7.2 Information Expert
-
-> **Assign responsibility to the class that has the information needed to fulfill it.**
-
-**Example:**
-```java
-// ShoppingCart should calculate total because it knows its items
-public class ShoppingCart {
-    private List<Item> items;
-    
-    // Information Expert: Cart has the items, so it calculates total
-    public double calculateTotal() {
-        return items.stream()
-            .mapToDouble(item -> item.getPrice() * item.getQuantity())
-            .sum();
-    }
-}
-```
-
----
-
-### 3.7.3 Low Coupling & High Cohesion
-
-| Principle | Description |
+| Technique | Description |
 |-----------|-------------|
-| **Low Coupling** | Classes should have minimal dependencies on other classes |
-| **High Cohesion** | Classes should have focused, related responsibilities |
+| **Brainstorming** | Team generates risks collaboratively |
+| **Interviews** | Consult stakeholders and experts |
+| **Checklists** | Historical risks from similar projects |
+| **SWOT Analysis** | Strengths, Weaknesses, Opportunities, Threats |
+| **Assumptions Analysis** | Validate assumptions that may be wrong |
+| **Root Cause Analysis** | Identify underlying causes of potential problems |
 
-**Good Design:**
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Order     │────▶│  Customer   │     │  Payment    │
-└─────────────┘     └─────────────┘     └─────────────┘
-      │
-      │
-      ▼
-┌─────────────┐
-│  OrderItem  │
-└─────────────┘
+---
 
-Each class has clear purpose; dependencies are minimal.
-```
+### 5.4.4 Risk Analysis
 
-**Bad Design (High Coupling, Low Cohesion):**
+**Probability:** Likelihood of risk occurring (0-100%)
+
+**Impact:** Consequence if risk occurs (cost, schedule, quality, reputation)
+
+**Risk Score = Probability × Impact**
+
+| Score | Category | Action |
+|-------|----------|--------|
+| > 0.7 | **Critical** | Immediate action required |
+| 0.4 - 0.7 | **High** | Active management; response plan needed |
+| 0.2 - 0.4 | **Medium** | Monitor; contingency plan |
+| < 0.2 | **Low** | Accept; periodic review |
+
+---
+
+### 5.4.5 Risk Response Strategies
+
+#### For Threats (Negative Risks)
+
+| Strategy | Description | Example |
+|----------|-------------|---------|
+| **Avoid** | Eliminate the threat | Choose proven technology instead of cutting-edge |
+| **Transfer** | Shift impact to third party | Purchase insurance; fixed-price contract |
+| **Mitigate** | Reduce probability or impact | Add testing; implement redundancy; train team |
+| **Accept** | Acknowledge and monitor | Budget contingency; schedule buffer |
+| **Escalate** | Raise to higher authority | Risk beyond project scope |
+
+#### For Opportunities (Positive Risks)
+
+| Strategy | Description | Example |
+|----------|-------------|---------|
+| **Exploit** | Ensure opportunity happens | Allocate resources to promising feature |
+| **Share** | Partner to capture benefit | Collaborate with external expert |
+| **Enhance** | Increase probability/impact | Add features to increase market appeal |
+| **Accept** | Take advantage if occurs | Be ready to capitalize |
+
+---
+
+### 5.4.6 Risk Register
+
+A **Risk Register** is the central document for tracking risks throughout the project.
+
+| Field | Description |
+|-------|-------------|
+| **ID** | Unique identifier |
+| **Description** | Clear statement of risk |
+| **Category** | Technical, organizational, external, etc. |
+| **Probability** | Likelihood (0-100%) |
+| **Impact** | Consequence (cost, schedule, quality) |
+| **Risk Score** | Probability × Impact |
+| **Priority** | Critical, High, Medium, Low |
+| **Response Strategy** | Avoid, Transfer, Mitigate, Accept |
+| **Action Plan** | Specific steps to implement response |
+| **Owner** | Person responsible for monitoring |
+| **Status** | Open, Mitigated, Closed |
+
+---
+
+## 5.5 Stakeholder & Communication Management
+
+---
+
+### 5.5.1 Stakeholder Identification
+
+**Stakeholders** are individuals or groups who can affect or are affected by the project.
+
+| Stakeholder Type | Examples |
+|------------------|----------|
+| **Internal** | Project sponsor, development team, management, operations |
+| **External** | Customers, end users, regulators, vendors, investors |
+| **Primary** | Directly impacted; actively involved |
+| **Secondary** | Indirectly impacted; may influence |
+
+---
+
+### 5.5.2 Stakeholder Analysis
+
+| Attribute | Description |
+|-----------|-------------|
+| **Power** | Ability to influence project |
+| **Interest** | Level of concern about project outcomes |
+| **Influence** | Capacity to affect decisions |
+| **Impact** | Degree to which project affects them |
+
+**Power/Interest Grid:**
+
 ```
-┌─────────────┐
-│   Utils     │ (Everything in one class)
-└─────────────┘
-      │
-      ├────▶ Everything depends on Utils
-      ├────▶ Low cohesion (unrelated responsibilities)
-      └────▶ Changes to Utils affect everything
+High Power  │  Keep Satisfied    │  Manage Closely
+            │  (Engage regularly)│  (Frequent communication)
+            │                    │
+            ├────────────────────┼────────────────────
+            │                    │
+Low Power   │  Monitor           │  Keep Informed
+            │  (Minimal effort)  │  (Regular updates)
+            │                    │
+            └────────────────────┴────────────────────
+                Low Interest         High Interest
 ```
 
 ---
 
-## 3.8 Design Patterns
+### 5.5.3 Communication Plan
+
+A **Communication Plan** defines who needs what information, when, and how.
+
+| Element | Description |
+|---------|-------------|
+| **Stakeholder** | Who needs information |
+| **Information** | What they need (status, decisions, risks) |
+| **Frequency** | How often (daily, weekly, milestone) |
+| **Format** | How delivered (email, meeting, report, dashboard) |
+| **Responsible** | Who provides the information |
+| **Purpose** | Why they need it (decision making, awareness, feedback) |
 
 ---
 
-### 3.8.1 Overview
+### 5.5.4 Communication Channels
 
-**Design patterns** are reusable solutions to common design problems. The NSCT expects you to recognize common patterns.
-
-| Category | Purpose | Examples |
-|----------|---------|----------|
-| **Creational** | Object creation | Singleton, Factory, Builder, Prototype |
-| **Structural** | Class/object composition | Adapter, Decorator, Facade, Proxy |
-| **Behavioral** | Object interaction | Observer, Strategy, Command, Template |
-
----
-
-### 3.8.2 Singleton Pattern
-
-**Purpose:** Ensure a class has only one instance and provide global access to it.
-
-**Structure:**
-```
-┌─────────────────────────┐
-│      Singleton          │
-├─────────────────────────┤
-│ - instance: Singleton   │
-├─────────────────────────┤
-│ - Singleton()           │
-│ + getInstance(): Singleton│
-└─────────────────────────┘
-```
-
-**Example:**
-```java
-public class DatabaseConnection {
-    private static DatabaseConnection instance;
-    
-    private DatabaseConnection() { }  // Private constructor
-    
-    public static DatabaseConnection getInstance() {
-        if (instance == null) {
-            instance = new DatabaseConnection();
-        }
-        return instance;
-    }
-    
-    public void connect() { ... }
-}
-```
-
-**When to Use:** Configuration managers, connection pools, logging, caching.
+| Channel | Best For | Considerations |
+|---------|----------|----------------|
+| **Face-to-Face** | Complex discussions, conflict resolution, team building | Most effective; not always possible |
+| **Video Conference** | Distributed teams, visual demonstrations | Requires scheduling; technology dependent |
+| **Email** | Formal communication, documentation, asynchronous | Can be misinterpreted; information overload |
+| **Instant Messaging** | Quick questions, informal coordination | Disruptive; information silos |
+| **Status Reports** | Formal progress updates | Ensure consistent format; avoid too much detail |
+| **Dashboards** | Real-time metrics, transparency | Requires tooling; ensure accuracy |
 
 ---
 
-### 3.8.3 Factory Pattern
-
-**Purpose:** Create objects without specifying the exact class.
-
-**Structure:**
-```
-┌─────────────────────────┐         ┌─────────────────────────┐
-│      Creator            │         │       Product           │
-├─────────────────────────┤         ├─────────────────────────┤
-│ + factoryMethod(): Product│───────▶│ + operation(): void    │
-└─────────────────────────┘         └─────────────────────────┘
-         ▲                                      ▲
-         │                                      │
-┌────────┴────────┐                   ┌─────────┴─────────┐
-│ ConcreteCreator │                   │ ConcreteProduct  │
-└─────────────────┘                   └───────────────────┘
-```
-
-**Example:**
-```java
-// Product interface
-public interface Payment {
-    void pay(double amount);
-}
-
-// Concrete products
-public class CreditCardPayment implements Payment {
-    public void pay(double amount) { ... }
-}
-
-public class PayPalPayment implements Payment {
-    public void pay(double amount) { ... }
-}
-
-// Factory
-public class PaymentFactory {
-    public static Payment createPayment(String type) {
-        switch (type) {
-            case "credit": return new CreditCardPayment();
-            case "paypal": return new PayPalPayment();
-            default: throw new IllegalArgumentException();
-        }
-    }
-}
-```
+## 5.6 Quality Management
 
 ---
 
-### 3.8.4 Observer Pattern
+### 5.6.1 Quality Concepts
 
-**Purpose:** Define a one-to-many dependency where when one object changes state, all dependents are notified.
-
-**Structure:**
-```
-┌─────────────────────────┐         ┌─────────────────────────┐
-│      Subject            │         │      Observer           │
-├─────────────────────────┤         ├─────────────────────────┤
-│ + attach(Observer)      │         │ + update()              │
-│ + detach(Observer)      │         └─────────────────────────┘
-│ + notify()              │                  ▲
-└─────────────────────────┘                  │
-         ▲                                   │
-         │                                   │
-┌────────┴────────┐                ┌─────────┴─────────┐
-│ ConcreteSubject │                │ ConcreteObserver  │
-└─────────────────┘                └───────────────────┘
-```
-
-**Example:**
-```java
-// Observer interface
-public interface OrderObserver {
-    void update(Order order);
-}
-
-// Subject
-public class Order {
-    private List<OrderObserver> observers = new ArrayList<>();
-    private String status;
-    
-    public void attach(OrderObserver observer) {
-        observers.add(observer);
-    }
-    
-    public void setStatus(String status) {
-        this.status = status;
-        notifyObservers();
-    }
-    
-    private void notifyObservers() {
-        for (OrderObserver observer : observers) {
-            observer.update(this);
-        }
-    }
-}
-
-// Concrete observer
-public class EmailNotifier implements OrderObserver {
-    public void update(Order order) {
-        System.out.println("Order status changed to: " + order.getStatus());
-        // Send email...
-    }
-}
-```
+| Concept | Description |
+|---------|-------------|
+| **Quality** | Degree to which the product meets requirements and satisfies stakeholders |
+| **Quality Assurance (QA)** | Process-focused; preventing defects |
+| **Quality Control (QC)** | Product-focused; detecting defects |
 
 ---
 
-### 3.8.5 Strategy Pattern
+### 5.6.2 Quality Management Processes
 
-**Purpose:** Define a family of algorithms, encapsulate each one, and make them interchangeable.
+| Process | Description |
+|---------|-------------|
+| **Plan Quality** | Identify quality requirements and standards |
+| **Manage Quality** | Audit processes; ensure adherence |
+| **Control Quality** | Monitor results; verify compliance |
 
-**Structure:**
-```
-┌─────────────────────────┐         ┌─────────────────────────┐
-│      Context            │         │      Strategy           │
-├─────────────────────────┤         ├─────────────────────────┤
-│ - strategy: Strategy    │────────▶│ + execute()             │
-│ + executeStrategy()     │         └─────────────────────────┘
-└─────────────────────────┘                  ▲
-                                             │
-                              ┌──────────────┼──────────────┐
-                              │              │              │
-                    ┌─────────┴─────┐ ┌──────┴──────┐ ┌─────┴────────┐
-                    │ ConcreteStrategyA│ │ConcreteStrategyB│ │ConcreteStrategyC│
-                    └─────────────────┘ └───────────────┘ └────────────────┘
-```
+---
 
-**Example:**
-```java
-// Strategy interface
-public interface SortStrategy {
-    void sort(int[] data);
-}
+### 5.6.3 Cost of Quality (CoQ)
 
-// Concrete strategies
-public class BubbleSort implements SortStrategy {
-    public void sort(int[] data) { /* Bubble sort implementation */ }
-}
+| Category | Description | Examples |
+|----------|-------------|----------|
+| **Prevention Costs** | Avoiding defects | Training, planning, standards, reviews |
+| **Appraisal Costs** | Finding defects | Testing, inspections, audits |
+| **Failure Costs (Internal)** | Defects found before release | Rework, debugging, retesting |
+| **Failure Costs (External)** | Defects found after release | Support, recalls, reputation damage |
 
-public class QuickSort implements SortStrategy {
-    public void sort(int[] data) { /* Quick sort implementation */ }
-}
+> **🔑 Key Insight:** Investing in prevention reduces total cost of quality. Defects found later cost exponentially more to fix.
 
-// Context
-public class Sorter {
-    private SortStrategy strategy;
-    
-    public Sorter(SortStrategy strategy) {
-        this.strategy = strategy;
-    }
-    
-    public void setStrategy(SortStrategy strategy) {
-        this.strategy = strategy;
-    }
-    
-    public void sort(int[] data) {
-        strategy.sort(data);
-    }
-}
+---
 
-// Usage
-Sorter sorter = new Sorter(new QuickSort());
-sorter.sort(data);  // Uses QuickSort
-sorter.setStrategy(new BubbleSort());
-sorter.sort(data);  // Uses BubbleSort
-```
+### 5.6.4 Quality Metrics
+
+| Metric | Description |
+|--------|-------------|
+| **Defect Density** | Defects per unit of size (e.g., per KLOC) |
+| **Defect Removal Efficiency** | Percentage of defects found before release |
+| **Mean Time Between Failures** | Average time between system failures |
+| **Customer Satisfaction** | Stakeholder perception of quality |
+| **Rework Effort** | Percentage of effort spent fixing defects |
 
 ---
 
@@ -1215,248 +706,179 @@ sorter.sort(data);  // Uses BubbleSort
 
 ---
 
-### Activity 1: UML Diagram Creation
+### Activity 1: Estimation Scenarios
 
-Create the following diagrams for a **Library Management System**:
+For each scenario, recommend an estimation technique and justify:
 
-1. **Use Case Diagram** with actors: Librarian, Member. Use cases: Borrow Book, Return Book, Search Catalog, Manage Members (Librarian only)
-
-2. **Class Diagram** with classes: Book, Member, Loan, Library. Show relationships.
-
-3. **Sequence Diagram** for "Borrow Book" use case showing Member → Library System → Loan → Book interactions
+**Scenario A:** A small startup with 4 developers building a new mobile app. Requirements are uncertain and will evolve.
 
 <details>
-<summary>Click for solutions</summary>
+<summary>Click for answer</summary>
+<strong>Planning Poker (Story Points).</strong> Team is small and co-located; requirements are uncertain; relative estimation using story points allows for uncertainty and enables velocity tracking. Points avoid false precision of hour estimates for unknown work.
+</details>
 
-**Use Case Diagram:**
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Library System                       │
-│                                                         │
-│   ┌─────────┐       ┌──────────────┐                   │
-│   │ Member  │──────▶│ Search Catalog│                   │
-│   └─────────┘       └──────────────┘                   │
-│        │                     ▲                         │
-│        │                     │                         │
-│        │              ┌──────┴──────┐                  │
-│        │              │             │                  │
-│        ▼              ▼             │                  │
-│   ┌─────────┐    ┌──────────────┐   │                  │
-│   │ Borrow  │    │ Return Book  │   │                  │
-│   │ Book    │    └──────────────┘   │                  │
-│   └─────────┘                       │                  │
-│        │                            │                  │
-│        └──────────────┬─────────────┘                  │
-│                       │                                │
-│   ┌─────────┐         │                                │
-│   │Librarian│─────────┼────────────────────────────────┤
-│   └─────────┘         │                                │
-│                       ▼                                │
-│                ┌──────────────┐                        │
-│                │ Manage       │                        │
-│                │ Members      │                        │
-│                └──────────────┘                        │
-└─────────────────────────────────────────────────────────┘
-```
+**Scenario B:** A government agency needs a fixed-price contract for a large system. Detailed requirements are available.
 
-**Class Diagram:**
-```
-┌─────────────────────┐     ┌─────────────────────┐
-│        Book         │     │       Member        │
-├─────────────────────┤     ├─────────────────────┤
-│ - isbn: String      │     │ - memberId: String  │
-│ - title: String     │     │ - name: String      │
-│ - author: String    │     │ - email: String     │
-│ - isAvailable: bool │     └─────────────────────┘
-├─────────────────────┤              ▲
-│ + borrow()          │              │
-│ + return()          │              │
-└─────────────────────┘              │
-         │                           │
-         │                           │
-         ▼                           │
-┌─────────────────────┐              │
-│        Loan         │              │
-├─────────────────────┤              │
-│ - loanId: String    │              │
-│ - borrowDate: Date  │              │
-│ - dueDate: Date     │              │
-├─────────────────────┤              │
-│ + calculateFine()   │              │
-└─────────────────────┘              │
-         │                           │
-         │                           │
-         └───────────────────────────┘
-```
+<details>
+<summary>Click for answer</summary>
+<strong>COCOMO or Function Point Analysis.</strong> Fixed-price contracts require predictable estimates. Function points provide a language-independent size measure that can be converted to effort using historical productivity data. COCOMO accounts for project complexity factors.
+</details>
+
+**Scenario C:** A company is building its 10th similar project with historical data available.
+
+<details>
+<summary>Click for answer</summary>
+<strong>Analogous Estimation.</strong> Historical data from similar projects provides reliable basis for estimation. Fast and inexpensive. Can be refined with parametric models if needed.
+</details>
+
+---
+
+### Activity 2: Risk Analysis
+
+For each risk, calculate risk score and recommend a response strategy:
+
+| Risk | Probability | Impact | Risk Score | Strategy |
+|------|-------------|--------|------------|----------|
+| Key developer leaves mid-project | 30% | High (schedule delay) | | |
+| New technology fails to meet requirements | 20% | Critical (project failure) | | |
+| Requirements change significantly | 80% | Medium (scope creep) | | |
+| Vendor goes out of business | 5% | Critical (dependency loss) | | |
+
+<details>
+<summary>Click for answer</summary>
+
+| Risk | Probability | Impact | Risk Score | Strategy |
+|------|-------------|--------|------------|----------|
+| Key developer leaves | 30% | High (0.7) | 0.21 | **Mitigate**: Cross-train team; document knowledge; use pair programming |
+| New technology fails | 20% | Critical (1.0) | 0.20 | **Avoid**: Create proof-of-concept early; have fallback technology |
+| Requirements change | 80% | Medium (0.4) | 0.32 | **Accept** with contingency: Agile approach; budget buffer for scope |
+| Vendor goes out of business | 5% | Critical (1.0) | 0.05 | **Transfer** or **Mitigate**: Multi-sourcing; escrow agreement |
 
 </details>
 
 ---
 
-### Activity 2: SOLID Identification
+### Activity 3: Communication Plan Design
 
-For each scenario, identify which SOLID principle is violated and explain why:
-
-1. A `UserManager` class handles user authentication, email notifications, database operations, and audit logging.
-
-<details>
-<summary>Click for answer</summary>
-<strong>Single Responsibility Principle (SRP) violation.</strong> The class has multiple reasons to change: authentication rules, email format, database schema, audit requirements.
-</details>
-
-2. To add a new payment method (Bitcoin), developers must modify the existing `PaymentProcessor` class and add a new `if` statement.
+Design a communication plan for a project with:
+- 8 developers (co-located)
+- Product owner in different city
+- External stakeholders (executives, customers)
+- 3-month duration
 
 <details>
 <summary>Click for answer</summary>
-<strong>Open/Closed Principle (OCP) violation.</strong> The class should be open for extension (new payment methods) but closed for modification.
-</details>
 
-3. A `Bird` class has a `fly()` method. A `Penguin` class extends `Bird` but `fly()` throws an exception because penguins can't fly.
+| Stakeholder | Information | Frequency | Format | Responsible |
+|-------------|-------------|-----------|--------|-------------|
+| Development Team | Daily progress, blockers | Daily | Daily Scrum (15 min) | Scrum Master |
+| Product Owner | Sprint progress, backlog | Weekly | Sprint Review | Team |
+| Product Owner | Impediments, decisions | As needed | Video call, Slack | Scrum Master |
+| Executives | High-level progress, risks | Bi-weekly | Dashboard, email summary | Project Manager |
+| Customers | Feature demonstrations | Per sprint | Sprint Review (recorded) | Product Owner |
+| All Stakeholders | Milestone completion | Per milestone | Status report | Project Manager |
 
-<details>
-<summary>Click for answer</summary>
-<strong>Liskov Substitution Principle (LSP) violation.</strong> A `Penguin` cannot substitute for a `Bird` without changing program behavior.
-</details>
-
-4. An `Animal` interface has methods `eat()`, `sleep()`, and `fly()`. A `Dog` class implements `Animal` but `fly()` is empty.
-
-<details>
-<summary>Click for answer</summary>
-<strong>Interface Segregation Principle (ISP) violation.</strong> The `Animal` interface is too broad; `Dog` is forced to implement methods it doesn't need.
-</details>
-
-5. A `ReportGenerator` class directly instantiates a `DatabaseConnection` class, making testing difficult.
-
-<details>
-<summary>Click for answer</summary>
-<strong>Dependency Inversion Principle (DIP) violation.</strong> High-level `ReportGenerator` depends on low-level `DatabaseConnection` rather than an abstraction.
 </details>
 
 ---
 
-### Activity 3: Design Pattern Matching
+## 📝 Module 5 Self-Assessment Quiz
 
-Match each scenario to the appropriate design pattern:
-
-| Scenario | Pattern |
-|----------|---------|
-| Only one database connection should exist | |
-| Creating different types of documents (PDF, Word, HTML) | |
-| Notify all subscribers when news is published | |
-| Different sorting algorithms interchangeable at runtime | |
-| Add logging functionality without modifying existing classes | |
-
-<details>
-<summary>Click for answer</summary>
-| Scenario | Pattern |
-|----------|---------|
-| Only one database connection should exist | **Singleton** |
-| Creating different types of documents (PDF, Word, HTML) | **Factory** |
-| Notify all subscribers when news is published | **Observer** |
-| Different sorting algorithms interchangeable at runtime | **Strategy** |
-| Add logging functionality without modifying existing classes | **Decorator** |
-</details>
-
----
-
-## 📝 Module 3 Self-Assessment Quiz
-
-1. What is the difference between analysis and design?
+1. What are the three constraints in the project management "iron triangle"?
 
    <details>
    <summary>Click for answer</summary>
-   Analysis focuses on understanding the problem ("what"); design focuses on creating the solution ("how").
+   Scope, Time, Cost. (Some models add Quality or Value as a fourth dimension.)
    </details>
 
-2. What are the four main UML diagrams covered in this module?
+2. What is the 100% rule in Work Breakdown Structure?
 
    <details>
    <summary>Click for answer</summary>
-   Use Case Diagram, Class Diagram, Sequence Diagram, Activity Diagram.
+   The WBS must include 100% of the work defined by the project scope. No work should be outside the WBS.
    </details>
 
-3. What is the difference between `<<include>>` and `<<extend>>` in use case diagrams?
+3. What is the difference between COCOMO and Function Point Analysis?
 
    <details>
    <summary>Click for answer</summary>
-   Include = mandatory behavior always executed; Extend = optional behavior executed only under certain conditions.
+   COCOMO estimates effort based on lines of code (KLOC) with cost drivers; Function Point Analysis estimates based on functionality delivered to the user, independent of implementation language.
    </details>
 
-4. What is the difference between aggregation and composition?
+4. What is story points in Agile estimation?
 
    <details>
    <summary>Click for answer</summary>
-   Aggregation is a weak "has-a" where parts can exist independently; composition is a strong "has-a" where parts cannot exist without the whole.
+   Story points are a relative measure of effort, complexity, and uncertainty. They are team-specific and more stable than hour estimates for Agile teams.
    </details>
 
-5. What does the Liskov Substitution Principle (LSP) state?
+5. What is the Critical Path?
 
    <details>
    <summary>Click for answer</summary>
-   Objects of a superclass should be replaceable with objects of a subclass without affecting program correctness.
+   The longest path through the project network. Tasks on the critical path have zero slack; any delay delays the project completion.
    </details>
 
-6. What is the purpose of the Dependency Inversion Principle (DIP)?
+6. What is velocity in Scrum?
 
    <details>
    <summary>Click for answer</summary>
-   High-level modules should not depend on low-level modules; both should depend on abstractions.
+   The sum of story points completed per sprint. Used for forecasting and capacity planning.
    </details>
 
-7. What design pattern ensures a class has only one instance?
+7. What is the difference between a burndown chart and a burnup chart?
 
    <details>
    <summary>Click for answer</summary>
-   Singleton Pattern.
+   Burndown shows remaining work over time; burnup shows completed work over time.
    </details>
 
-8. What design pattern defines a family of interchangeable algorithms?
+8. What are the four risk response strategies for threats?
 
    <details>
    <summary>Click for answer</summary>
-   Strategy Pattern.
+   Avoid, Transfer, Mitigate, Accept.
    </details>
 
-9. What does the Information Expert principle state?
+9. What is the difference between Quality Assurance and Quality Control?
 
    <details>
    <summary>Click for answer</summary>
-   Assign responsibility to the class that has the information needed to fulfill it.
+   Quality Assurance is process-focused (preventing defects); Quality Control is product-focused (detecting defects).
    </details>
 
-10. What is the difference between low coupling and high cohesion?
+10. What is the Power/Interest Grid used for?
 
     <details>
     <summary>Click for answer</summary>
-    Low coupling means minimal dependencies between classes; high cohesion means classes have focused, related responsibilities.
+    To classify stakeholders based on their power to influence the project and their interest in project outcomes, guiding communication strategies.
     </details>
 
 ---
 
 ## 🔗 Connections to Other Modules
 
-| Concept from Module 3 | Connects to |
+| Concept from Module 5 | Connects to |
 |-----------------------|-------------|
-| Use case diagrams | Module 2: Requirements (use cases) |
-| Class diagrams | Module 4: Implementation (code structure) |
-| Sequence diagrams | Module 4: Implementation (object interactions) |
-| SOLID principles | Module 4: Implementation (code quality) |
-| Design patterns | Module 4: Implementation (reusable solutions) |
-| High cohesion/low coupling | Module 4: Architecture (component design) |
+| Estimation (COCOMO) | Module 4: Implementation (size metrics) |
+| Risk management | Module 3: Design (technical risk) |
+| Agile metrics | Module 2: Requirements (backlog management) |
+| Quality management | Module 6: Testing (QA/QC processes) |
+| Communication plan | Module 1: Team structures, stakeholder communication |
 
 ---
 
-## ✅ Module 3 Summary
+## ✅ Module 5 Summary
 
 | Section | Key Takeaways |
 |---------|---------------|
-| **3.1 Introduction** | Models manage complexity; analysis (what) vs. design (how); UML standard notation |
-| **3.2 Use Case Diagrams** | Actors and use cases; include (mandatory) vs. extend (optional) |
-| **3.3 Class Diagrams** | Classes, attributes, methods; relationships: association, aggregation, composition, inheritance |
-| **3.4 Sequence Diagrams** | Object interactions over time; lifelines, messages, combined fragments |
-| **3.5 Activity Diagrams** | Workflow modeling; decisions, forks, joins, swimlanes |
-| **3.6 SOLID Principles** | SRP, OCP, LSP, ISP, DIP—foundational design principles |
-| **3.7 GRASP Principles** | Responsibility assignment: Information Expert, Low Coupling, High Cohesion |
-| **3.8 Design Patterns** | Singleton, Factory, Observer, Strategy—reusable solutions |
+| **5.1 Introduction** | Project management balances scope, time, cost; PM roles differ in traditional vs. Agile |
+| **5.2 Project Planning** | WBS decomposes work; estimation methods: expert, analogous, parametric (COCOMO, function points), planning poker; scheduling: Gantt, Critical Path, PERT |
+| **5.3 Agile Management** | Scrum (roles, artifacts, events); metrics: velocity, burndown; Kanban (WIP limits, flow) |
+| **5.4 Risk Management** | Identify, analyze (probability × impact), prioritize, respond (avoid, transfer, mitigate, accept) |
+| **5.5 Communication** | Stakeholder analysis (Power/Interest Grid); communication plan; channels |
+| **5.6 Quality** | Quality Assurance (process) vs. Quality Control (product); Cost of Quality |
 
 ---
+
+
