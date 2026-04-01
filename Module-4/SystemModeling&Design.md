@@ -1,5 +1,5 @@
 
-# Module 3: System Modeling & Design
+# Module 4: System Modeling & Design
 
 ---
 
@@ -14,11 +14,11 @@ By the end of this module, you should be able to:
 
 ---
 
-## 3.1 Introduction to System Modeling & Design
+## 4.1 Introduction to System Modeling & Design
 
 ---
 
-### 3.1.1 What Is System Modeling?
+### 4.1.1 What Is System Modeling?
 
 **System modeling** is the process of creating abstract representations of a system to understand, document, and communicate its structure and behavior before implementation.
 
@@ -36,7 +36,7 @@ By the end of this module, you should be able to:
 
 ---
 
-### 3.1.2 Analysis vs. Design
+### 4.1.2 Analysis vs. Design
 
 Understanding the distinction between analysis and design is essential for the NSCT.
 
@@ -52,7 +52,7 @@ Understanding the distinction between analysis and design is essential for the N
 
 ---
 
-### 3.1.3 The Role of UML
+### 4.1.3 The Role of UML
 
 **Unified Modeling Language (UML)** is the standard notation for software modeling. It provides a set of diagram types to represent different views of a system.
 
@@ -75,17 +75,17 @@ Understanding the distinction between analysis and design is essential for the N
 
 ---
 
-## 3.2 Use Case Diagrams
+## 4.2 Use Case Diagrams
 
 ---
 
-### 3.2.1 Purpose
+### 4.2.1 Purpose
 
 Use case diagrams show the **functionality** of a system from the user's perspective. They answer: "What can users do with the system?"
 
 ---
 
-### 3.2.2 Components
+### 4.2.2 Components
 
 | Component | Notation | Description |
 |-----------|---------|-------------|
@@ -99,7 +99,7 @@ Use case diagrams show the **functionality** of a system from the user's perspec
 
 ---
 
-### 3.2.3 Example: Online Banking System
+### 4.2.3 Example: Online Banking System
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -147,7 +147,7 @@ Use case diagrams show the **functionality** of a system from the user's perspec
 
 ---
 
-### 3.2.4 Include vs. Extend
+### 4.2.4 Include vs. Extend
 
 | Relationship | Meaning | Example |
 |--------------|---------|---------|
@@ -158,17 +158,17 @@ Use case diagrams show the **functionality** of a system from the user's perspec
 
 ---
 
-## 3.3 Class Diagrams
+## 4.3 Class Diagrams
 
 ---
 
-### 3.3.1 Purpose
+### 4.3.1 Purpose
 
 Class diagrams show the **static structure** of a system: classes, attributes, methods, and relationships between classes.
 
 ---
 
-### 3.3.2 Class Notation
+### 4.3.2 Class Notation
 
 ```
 ┌─────────────────────────────────────────┐
@@ -176,11 +176,11 @@ Class diagrams show the **static structure** of a system: classes, attributes, m
 ├─────────────────────────────────────────┤
 │  - attribute1: Type                      │
 │  # attribute2: Type                      │
-│  + attribute3: Type                      │
+│  + attribute4: Type                      │
 ├─────────────────────────────────────────┤
 │  + method1(): ReturnType                 │
 │  - method2(param: Type): ReturnType      │
-│  # method3(): void                       │
+│  # method4(): void                       │
 └─────────────────────────────────────────┘
 ```
 
@@ -195,7 +195,7 @@ Class diagrams show the **static structure** of a system: classes, attributes, m
 
 ---
 
-### 3.3.3 Relationships
+### 4.3.3 Relationships
 
 The NSCT expects you to understand the different types of relationships between classes.
 
@@ -318,7 +318,7 @@ Order depends on Payment (uses it temporarily), but doesn't own it.
 
 ---
 
-### 3.3.4 Relationship Summary
+### 4.3.4 Relationship Summary
 
 | Relationship | Notation | Type | Example |
 |--------------|----------|------|---------|
@@ -330,7 +330,7 @@ Order depends on Payment (uses it temporarily), but doesn't own it.
 
 ---
 
-### 3.3.5 Example: Complete Class Diagram
+### 4.3.5 Example: Complete Class Diagram
 
 ```
 ┌─────────────────────────────┐         ┌─────────────────────────────┐
@@ -384,17 +384,17 @@ Order depends on Payment (uses it temporarily), but doesn't own it.
 
 ---
 
-## 3.4 Sequence Diagrams
+## 4.4 Sequence Diagrams
 
 ---
 
-### 3.4.1 Purpose
+### 4.4.1 Purpose
 
 Sequence diagrams show **interactions over time** between objects. They answer: "How do objects collaborate to accomplish a task?"
 
 ---
 
-### 3.4.2 Components
+### 4.4.2 Components
 
 | Component | Notation | Description |
 |-----------|----------|-------------|
@@ -409,7 +409,7 @@ Sequence diagrams show **interactions over time** between objects. They answer: 
 
 ---
 
-### 3.4.3 Example: Place Order Sequence
+### 4.4.3 Example: Place Order Sequence
 
 ```
 Customer          :OrderController    :OrderService      :Inventory         :PaymentService
@@ -447,7 +447,7 @@ Customer          :OrderController    :OrderService      :Inventory         :Pay
 
 ---
 
-### 3.4.4 Combined Fragments
+### 4.4.4 Combined Fragments
 
 | Fragment | Symbol | Meaning |
 |----------|--------|---------|
@@ -491,17 +491,17 @@ Customer          :OrderController    :OrderService      :Inventory         :Pay
 
 ---
 
-## 3.5 Activity Diagrams
+## 4.5 Activity Diagrams
 
 ---
 
-### 3.5.1 Purpose
+### 4.5.1 Purpose
 
 Activity diagrams model **workflows** and **process flows**. They answer: "What happens step-by-step?"
 
 ---
 
-### 3.5.2 Components
+### 4.5.2 Components
 
 | Component | Notation | Description |
 |-----------|----------|-------------|
@@ -516,7 +516,7 @@ Activity diagrams model **workflows** and **process flows**. They answer: "What 
 
 ---
 
-### 3.5.3 Example: Order Processing Workflow
+### 4.5.3 Example: Order Processing Workflow
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -606,11 +606,11 @@ Activity diagrams model **workflows** and **process flows**. They answer: "What 
 
 ---
 
-## 3.6 SOLID Design Principles
+## 4.6 SOLID Design Principles
 
 ---
 
-### 3.6.1 Overview
+### 4.6.1 Overview
 
 SOLID is an acronym for five design principles that make software more maintainable, understandable, and flexible. The NSCT expects you to understand these principles.
 
@@ -624,7 +624,7 @@ SOLID is an acronym for five design principles that make software more maintaina
 
 ---
 
-### 3.6.2 S: Single Responsibility Principle (SRP)
+### 4.6.2 S: Single Responsibility Principle (SRP)
 
 > **"A class should have only one reason to change."**
 
@@ -639,7 +639,7 @@ public class Employee {
     // Responsibility 2: Payroll calculation
     public double calculatePay() { ... }
     
-    // Responsibility 3: Database persistence
+    // Responsibility 4: Database persistence
     public void saveToDatabase() { ... }
     
     // Responsibility 4: Report generation
@@ -673,7 +673,7 @@ public class EmployeeReportGenerator {
 
 ---
 
-### 3.6.3 O: Open/Closed Principle (OCP)
+### 4.6.3 O: Open/Closed Principle (OCP)
 
 > **"Software entities should be open for extension but closed for modification."**
 
@@ -730,7 +730,7 @@ public class AreaCalculator {
 
 ---
 
-### 3.6.4 L: Liskov Substitution Principle (LSP)
+### 4.6.4 L: Liskov Substitution Principle (LSP)
 
 > **"Objects of a superclass should be replaceable with objects of a subclass without affecting correctness."**
 
@@ -796,7 +796,7 @@ public class Square implements Shape {
 
 ---
 
-### 3.6.5 I: Interface Segregation Principle (ISP)
+### 4.6.5 I: Interface Segregation Principle (ISP)
 
 > **"Clients should not be forced to depend on interfaces they do not use."**
 
@@ -855,7 +855,7 @@ public class Robot implements Workable, MeetingAttendable {
 
 ---
 
-### 3.6.6 D: Dependency Inversion Principle (DIP)
+### 4.6.6 D: Dependency Inversion Principle (DIP)
 
 > **"High-level modules should not depend on low-level modules. Both should depend on abstractions."**
 
@@ -911,11 +911,11 @@ NotificationService smsNotifier = new NotificationService(new SMSService());
 
 ---
 
-## 3.7 GRASP Principles
+## 4.7 GRASP Principles
 
 ---
 
-### 3.7.1 Overview
+### 4.7.1 Overview
 
 **GRASP (General Responsibility Assignment Software Patterns)** are principles for assigning responsibilities to classes in object-oriented design.
 
@@ -933,7 +933,7 @@ NotificationService smsNotifier = new NotificationService(new SMSService());
 
 ---
 
-### 3.7.2 Information Expert
+### 4.7.2 Information Expert
 
 > **Assign responsibility to the class that has the information needed to fulfill it.**
 
@@ -954,7 +954,7 @@ public class ShoppingCart {
 
 ---
 
-### 3.7.3 Low Coupling & High Cohesion
+### 4.7.3 Low Coupling & High Cohesion
 
 | Principle | Description |
 |-----------|-------------|
@@ -989,11 +989,11 @@ Each class has clear purpose; dependencies are minimal.
 
 ---
 
-## 3.8 Design Patterns
+## 4.8 Design Patterns
 
 ---
 
-### 3.8.1 Overview
+### 4.8.1 Overview
 
 **Design patterns** are reusable solutions to common design problems. The NSCT expects you to recognize common patterns.
 
@@ -1005,7 +1005,7 @@ Each class has clear purpose; dependencies are minimal.
 
 ---
 
-### 3.8.2 Singleton Pattern
+### 4.8.2 Singleton Pattern
 
 **Purpose:** Ensure a class has only one instance and provide global access to it.
 
@@ -1043,7 +1043,7 @@ public class DatabaseConnection {
 
 ---
 
-### 3.8.3 Factory Pattern
+### 4.8.3 Factory Pattern
 
 **Purpose:** Create objects without specifying the exact class.
 
@@ -1091,7 +1091,7 @@ public class PaymentFactory {
 
 ---
 
-### 3.8.4 Observer Pattern
+### 4.8.4 Observer Pattern
 
 **Purpose:** Define a one-to-many dependency where when one object changes state, all dependents are notified.
 
@@ -1150,7 +1150,7 @@ public class EmailNotifier implements OrderObserver {
 
 ---
 
-### 3.8.5 Strategy Pattern
+### 4.8.5 Strategy Pattern
 
 **Purpose:** Define a family of algorithms, encapsulate each one, and make them interchangeable.
 
@@ -1224,7 +1224,7 @@ Create the following diagrams for a **Library Management System**:
 
 2. **Class Diagram** with classes: Book, Member, Loan, Library. Show relationships.
 
-3. **Sequence Diagram** for "Borrow Book" use case showing Member → Library System → Loan → Book interactions
+4. **Sequence Diagram** for "Borrow Book" use case showing Member → Library System → Loan → Book interactions
 
 <details>
 <summary>Click for solutions</summary>
@@ -1312,7 +1312,7 @@ For each scenario, identify which SOLID principle is violated and explain why:
 <strong>Open/Closed Principle (OCP) violation.</strong> The class should be open for extension (new payment methods) but closed for modification.
 </details>
 
-3. A `Bird` class has a `fly()` method. A `Penguin` class extends `Bird` but `fly()` throws an exception because penguins can't fly.
+4. A `Bird` class has a `fly()` method. A `Penguin` class extends `Bird` but `fly()` throws an exception because penguins can't fly.
 
 <details>
 <summary>Click for answer</summary>
@@ -1360,7 +1360,7 @@ Match each scenario to the appropriate design pattern:
 
 ---
 
-## 📝 Module 3 Self-Assessment Quiz
+## 📝 Module 4 Self-Assessment Quiz
 
 1. What is the difference between analysis and design?
 
@@ -1436,29 +1436,29 @@ Match each scenario to the appropriate design pattern:
 
 ## 🔗 Connections to Other Modules
 
-| Concept from Module 3 | Connects to |
+| Concept from Module 4 | Connects to |
 |-----------------------|-------------|
 | Use case diagrams | Module 2: Requirements (use cases) |
-| Class diagrams | Module 4: Implementation (code structure) |
-| Sequence diagrams | Module 4: Implementation (object interactions) |
-| SOLID principles | Module 4: Implementation (code quality) |
-| Design patterns | Module 4: Implementation (reusable solutions) |
-| High cohesion/low coupling | Module 4: Architecture (component design) |
+| Class diagrams | Module 5: Implementation (code structure) |
+| Sequence diagrams | Module 5: Implementation (object interactions) |
+| SOLID principles | Module 5: Implementation (code quality) |
+| Design patterns | Module 5: Implementation (reusable solutions) |
+| High cohesion/low coupling | Module 5: Architecture (component design) |
 
 ---
 
-## ✅ Module 3 Summary
+## ✅ Module 4 Summary
 
 | Section | Key Takeaways |
 |---------|---------------|
-| **3.1 Introduction** | Models manage complexity; analysis (what) vs. design (how); UML standard notation |
-| **3.2 Use Case Diagrams** | Actors and use cases; include (mandatory) vs. extend (optional) |
-| **3.3 Class Diagrams** | Classes, attributes, methods; relationships: association, aggregation, composition, inheritance |
-| **3.4 Sequence Diagrams** | Object interactions over time; lifelines, messages, combined fragments |
-| **3.5 Activity Diagrams** | Workflow modeling; decisions, forks, joins, swimlanes |
-| **3.6 SOLID Principles** | SRP, OCP, LSP, ISP, DIP—foundational design principles |
-| **3.7 GRASP Principles** | Responsibility assignment: Information Expert, Low Coupling, High Cohesion |
-| **3.8 Design Patterns** | Singleton, Factory, Observer, Strategy—reusable solutions |
+| **4.1 Introduction** | Models manage complexity; analysis (what) vs. design (how); UML standard notation |
+| **4.2 Use Case Diagrams** | Actors and use cases; include (mandatory) vs. extend (optional) |
+| **4.3 Class Diagrams** | Classes, attributes, methods; relationships: association, aggregation, composition, inheritance |
+| **4.4 Sequence Diagrams** | Object interactions over time; lifelines, messages, combined fragments |
+| **4.5 Activity Diagrams** | Workflow modeling; decisions, forks, joins, swimlanes |
+| **4.6 SOLID Principles** | SRP, OCP, LSP, ISP, DIP—foundational design principles |
+| **4.7 GRASP Principles** | Responsibility assignment: Information Expert, Low Coupling, High Cohesion |
+| **4.8 Design Patterns** | Singleton, Factory, Observer, Strategy—reusable solutions |
 
 ---
 
