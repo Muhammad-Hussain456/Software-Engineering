@@ -16,6 +16,10 @@ By the end of this module, you should be able to:
 
 ## 3.1 Introduction to Software Project Management
 
+### Project Management Activities
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a8c17497-c219-4362-bdb8-994152696c16" />
+
 ---
 
 ### 3.1.1 What Is Software Project Management?
