@@ -49,7 +49,7 @@
 
 ---
 
-#### Module 5: Software Architecture
+#### Module 5: Software Construction & Implementation
 **Covers:**   Software Architecture, Software Construction, Software Configuration Management.
 
 - 5.1 Architectural Styles & Patterns (MVC, Layered, Client-Server, Microservices vs. Monolith, Event-Driven).
