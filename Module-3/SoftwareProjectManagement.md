@@ -18,7 +18,8 @@ By the end of this module, you should be able to:
 
 ### Project Management Activities
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a8c17497-c219-4362-bdb8-994152696c16" />
+<img width="600" height="499" alt="image" src="https://github.com/user-attachments/assets/69e8e5d4-c25b-4ba3-922f-8d95cb74bafd" />
+
 
 ---
 
