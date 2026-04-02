@@ -144,6 +144,12 @@ There are three main categories of requirements. Understanding the distinction i
 
 ---
 
+
+### Levels of Requirements
+
+<img width="641" height="518" alt="image" src="https://github.com/user-attachments/assets/f3f02819-148d-44c5-b021-14df5a3b9ad2" />
+
+---
 ### 2.1.4 Requirements vs. User Needs
 
 Understanding the difference between what users *want* and what they *need* is critical.
