@@ -16,12 +16,7 @@ By the end of this module, you should be able to:
 
 ## 3.1 Introduction to Software Project Management
 
-### Project Management Activities
 
-<img width="600" height="499" alt="image" src="https://github.com/user-attachments/assets/69e8e5d4-c25b-4ba3-922f-8d95cb74bafd" />
-
-
----
 
 ### 3.1.1 What Is Software Project Management?
 
@@ -68,11 +63,15 @@ Traditionally, project management balances three competing constraints:
 
 The Project Management Institute (PMI) defines ten knowledge areas. For NSCT, focus on these:
 
+<img width="600" height="499" alt="image" src="https://github.com/user-attachments/assets/69e8e5d4-c25b-4ba3-922f-8d95cb74bafd" />
+
+---
+
 | Knowledge Area | Description |
 |----------------|-------------|
 | **Integration Management** | Coordinating all aspects of the project |
 | **Scope Management** | Defining and controlling what is included |
-| **Schedule Management** | Ensuring timely completion |
+| **Schedule/Time Management** | Ensuring timely completion |
 | **Cost Management** | Planning and controlling budget |
 | **Quality Management** | Meeting quality requirements |
 | **Resource Management** | Managing team and physical resources |
@@ -486,31 +485,8 @@ Remaining Work
 
 ### 3.4.2 Risk Management Process
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         Risk Management Process                             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
-│   │ Identification│───▶│   Analysis   │───▶│  Prioritization│               │
-│   │              │    │              │    │               │               │
-│   │ Find risks   │    │ Assess       │    │ Rank by       │               │
-│   │ Document     │    │ Probability  │    │ Impact ×      │               │
-│   │              │    │ & Impact     │    │ Probability   │               │
-│   └──────────────┘    └──────────────┘    └──────────────┘                │
-│          │                   │                   │                         │
-│          │                   │                   │                         │
-│          ▼                   ▼                   ▼                         │
-│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                │
-│   │   Response   │───▶│   Monitoring │───▶│   Control    │                │
-│   │   Planning   │    │              │    │              │                │
-│   │              │    │ Track risks  │    │ Implement    │                │
-│   │ Mitigation   │    │ Reassess     │    │ responses    │                │
-│   │ Strategies   │    │              │    │              │                │
-│   └──────────────┘    └──────────────┘    └──────────────┘                │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+<img width="881" height="265" alt="image" src="https://github.com/user-attachments/assets/70300499-c7f1-4806-8316-671153a1e91b" />
+
 
 ---
 
